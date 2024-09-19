@@ -1,0 +1,170 @@
+/* resources/css/app.css */
+
+@font-face {
+    font-family: "TT Firs Neue";
+    src: url("/fonts/tt-firs-neue/TTFirsNeue-TrialRegular.woff2")
+            format("woff2"),
+        url("/fonts/tt-firs-neue/TTFirsNeue-TrialRegular.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "TT Firs Neue";
+    src: url("/fonts/tt-firs-neue/TTFirsNeue-TrialItalic.woff2") format("woff2"),
+        url("/fonts/tt-firs-neue/TTFirsNeue-TrialItalic.woff") format("woff");
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "TT Firs Neue";
+    src: url("/fonts/tt-firs-neue/TTFirsNeue-TrialBold.woff2") format("woff2"),
+        url("/fonts/tt-firs-neue/TTFirsNeue-TrialBold.woff") format("woff");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "TT Firs Neue";
+    src: url("/fonts/tt-firs-neue/TTFirsNeue-TrialBoldItalic.woff2")
+            format("woff2"),
+        url("/fonts/tt-firs-neue/TTFirsNeue-TrialBoldItalic.woff")
+            format("woff");
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "TT Firs Neue";
+    src: url("/fonts/tt-firs-neue/TTFirsNeue-TrialMedium.woff2") format("woff2"),
+        url("/fonts/tt-firs-neue/TTFirsNeue-TrialMedium.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "TT Firs Neue";
+    src: url("/fonts/tt-firs-neue/TTFirsNeue-TrialMediumItalic.woff2")
+            format("woff2"),
+        url("/fonts/tt-firs-neue/TTFirsNeue-TrialMediumItalic.woff")
+            format("woff");
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "TT Firs Neue";
+    src: url("/fonts/tt-firs-neue/TTFirsNeue-TrialDemiBold.woff2")
+            format("woff2"),
+        url("/fonts/tt-firs-neue/TTFirsNeue-TrialDemiBold.woff") format("woff");
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "TT Firs Neue";
+    src: url("/fonts/tt-firs-neue/TTFirsNeue-TrialDemiBoldItalic.woff2")
+            format("woff2"),
+        url("/fonts/tt-firs-neue/TTFirsNeue-TrialDemiBoldItalic.woff")
+            format("woff");
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "TT Firs Neue";
+    src: url("/fonts/tt-firs-neue/TTFirsNeue-TrialExtraBold.woff2")
+            format("woff2"),
+        url("/fonts/tt-firs-neue/TTFirsNeue-TrialExtraBold.woff") format("woff");
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "TT Firs Neue";
+    src: url("/fonts/tt-firs-neue/TTFirsNeue-TrialExtraBoldItalic.woff2")
+            format("woff2"),
+        url("/fonts/tt-firs-neue/TTFirsNeue-TrialExtraBoldItalic.woff")
+            format("woff");
+    font-weight: 800;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "TT Firs Neue";
+    src: url("/fonts/tt-firs-neue/TTFirsNeue-TrialBlack.woff2") format("woff2"),
+        url("/fonts/tt-firs-neue/TTFirsNeue-TrialBlack.woff") format("woff");
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "TT Firs Neue";
+    src: url("/fonts/tt-firs-neue/TTFirsNeue-TrialBlackItalic.woff2")
+            format("woff2"),
+        url("/fonts/tt-firs-neue/TTFirsNeue-TrialBlackItalic.woff")
+            format("woff");
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "TT Firs Neue";
+    src: url("/fonts/tt-firs-neue/TTFirsNeue-TrialExtraLight.woff2")
+            format("woff2"),
+        url("/fonts/tt-firs-neue/TTFirsNeue-TrialExtraLight.woff")
+            format("woff");
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "TT Firs Neue";
+    src: url("/fonts/tt-firs-neue/TTFirsNeue-TrialExtraLightItalic.woff2")
+            format("woff2"),
+        url("/fonts/tt-firs-neue/TTFirsNeue-TrialExtraLightItalic.woff")
+            format("woff");
+    font-weight: 200;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "TT Firs Neue";
+    src: url("/fonts/tt-firs-neue/TTFirsNeue-TrialThin.woff2") format("woff2"),
+        url("/fonts/tt-firs-neue/TTFirsNeue-TrialThin.woff") format("woff");
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "TT Firs Neue";
+    src: url("/fonts/tt-firs-neue/TTFirsNeue-TrialThinItalic.woff2")
+            format("woff2"),
+        url("/fonts/tt-firs-neue/TTFirsNeue-TrialThinItalic.woff")
+            format("woff");
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "TT Firs Neue";
+    src: url("/fonts/tt-firs-neue/TTFirsNeue-TrialVarRoman.woff2")
+            format("woff2"),
+        url("/fonts/tt-firs-neue/TTFirsNeue-TrialVarRoman.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "TT Firs Neue";
+    src: url("/fonts/tt-firs-neue/TTFirsNeue-TrialVarItalic.woff2")
+            format("woff2"),
+        url("/fonts/tt-firs-neue/TTFirsNeue-TrialVarItalic.woff") format("woff");
+    font-weight: 400;
+    font-style: italic;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

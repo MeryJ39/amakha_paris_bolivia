@@ -1,0 +1,11 @@
+@font-face {
+    font-family: "Mija";
+    src: url("../fonts/Mija-Bold.otf") format("otf"),
+        url("../fonts/Mija-Bold.otf") format("truetype");
+    font-display: swap;
+}
+
+.nav-link {
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.7);
+}
