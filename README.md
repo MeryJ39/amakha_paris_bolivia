@@ -67,53 +67,53 @@ Desarrollar una plataforma de comercio electrónico que permita controlar la ges
 
 ## Checklist de Tareas
 
-#### Preparación y Configuración
+### Preparación y Configuración
 
--   [ ] Clonar el repositorio del proyecto.
--   [ ] Instalar dependencias necesarias con Composer.
--   [ ] Configurar el entorno local (XAMPP).
--   [ ] Crear y configurar la base de datos MySQL.
+-   🔲 Clonar el repositorio del proyecto.
+-   🔲 Instalar dependencias necesarias con Composer.
+-   🔲 Configurar el entorno local (XAMPP).
+-   🔲 Crear y configurar la base de datos MySQL.
 
-#### Diagnóstico y Planificación
+### Diagnóstico y Planificación
 
--   [x] Diagnosticar los procesos actuales de pedidos y ventas.
--   [x] Identificar y seleccionar metodologías y herramientas tecnológicas.
+-   ✅ Diagnosticar los procesos actuales de pedidos y ventas.
+-   ✅ Identificar y seleccionar metodologías y herramientas tecnológicas.
 
-#### Desarrollo
+### Desarrollo
 
--   [ ] Diseñar componentes de Front-End para el catálogo y gestión de pedidos.
--   [ ] Implementar Back-End para la gestión de ventas y pedidos.
--   [ ] Configurar rutas y controladores en Laravel.
--   [ ] Integrar la base de datos con el sistema de gestión de stock.
+-   🔲 Diseñar componentes de Front-End para el catálogo y gestión de pedidos.
+-   🔲 Implementar Back-End para la gestión de ventas y pedidos.
+-   🔲 Configurar rutas y controladores en Laravel.
+-   🔲 Integrar la base de datos con el sistema de gestión de stock.
 
-#### Pruebas
+### Pruebas
 
--   [ ] Realizar pruebas unitarias en el código.
--   [ ] Realizar pruebas funcionales de la plataforma.
--   [ ] Evaluar la experiencia del usuario en el Front-End.
+-   🔲 Realizar pruebas unitarias en el código.
+-   🔲 Realizar pruebas funcionales de la plataforma.
+-   🔲 Evaluar la experiencia del usuario en el Front-End.
 
-#### Implementación
+### Implementación
 
--   [ ] Desplegar la aplicación en un servidor de producción.
--   [ ] Configurar el dominio y SSL (si es necesario).
+-   🔲 Desplegar la aplicación en un servidor de producción.
+-   🔲 Configurar el dominio y SSL (si es necesario).
 
-#### Mantenimiento
+### Mantenimiento
 
--   [ ] Monitorear el rendimiento de la plataforma.
--   [ ] Actualizar el sistema y las dependencias según sea necesario.
--   [ ] Recolectar feedback de usuarios para futuras mejoras.
+-   🔲 Monitorear el rendimiento de la plataforma.
+-   🔲 Actualizar el sistema y las dependencias según sea necesario.
+-   🔲 Recolectar feedback de usuarios para futuras mejoras.
 
-#### Documentación
+### Documentación
 
--   [ ] Documentar el proceso de instalación y uso de la plataforma.
--   [ ] Crear una guía para futuros desarrolladores sobre la estructura del proyecto.
+-   🔲 Documentar el proceso de instalación y uso de la plataforma.
+-   🔲 Crear una guía para futuros desarrolladores sobre la estructura del proyecto.
 
-#### Contribuciones
+### Contribuciones
 
--   [ ] Establecer un canal de comunicación para contribuciones externas.
--   [ ] Revisar y aceptar pull requests de colaboradores.
+-   🔲 Establecer un canal de comunicación para contribuciones externas.
+-   🔲 Revisar y aceptar pull requests de colaboradores.
 
 ### Finalización
 
--   [ ] Revisar que todos los objetivos del proyecto se hayan cumplido.
--   [ ] Publicar la versión final de la plataforma.
+-   🔲 Revisar que todos los objetivos del proyecto se hayan cumplido.
+-   🔲 Publicar la versión final de la plataforma.
