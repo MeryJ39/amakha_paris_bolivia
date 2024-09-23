@@ -69,10 +69,10 @@ Desarrollar una plataforma de comercio electrónico que permita controlar la ges
 
 ### Preparación y Configuración
 
--   🔲 Clonar el repositorio del proyecto.
--   🔲 Instalar dependencias necesarias con Composer.
--   🔲 Configurar el entorno local (XAMPP).
--   🔲 Crear y configurar la base de datos MySQL.
+-   ✅ Clonar el repositorio del proyecto.
+-   ✅ Instalar dependencias necesarias con Composer.
+-   ✅ Configurar el entorno local (XAMPP).
+-   ✅ Crear y configurar la base de datos MySQL.
 
 ### Diagnóstico y Planificación
 
@@ -82,6 +82,13 @@ Desarrollar una plataforma de comercio electrónico que permita controlar la ges
 ### Desarrollo
 
 -   🔲 Diseñar componentes de Front-End para el catálogo y gestión de pedidos.
+-   🔲 Realizar em mapeo de enlaces en el footer.
+-   🔲 Implementar la funcionalidad completa del Header.
+-   🔲 Mejorar la UI/UX de los botones de autenticacion.
+-   🔲 Personalizar la interface de Autenticacion de Usuarios(inspirarse del original/boton registrarse).
+-   🔲 Implementar la vista del Perfil de Usuarios(anadir direcciones/aumentar perfil/pedidos)
+-   🔲 Implementar panel de administracion(ventasxmes/pedidos pendientes/nesclientsxm/bestsellers/).
+-   🔲 Agregar al panel las pestanas: Productos(categorias), pedidos, soporte , usuarios, config-page.
 -   🔲 Implementar Back-End para la gestión de ventas y pedidos.
 -   🔲 Configurar rutas y controladores en Laravel.
 -   🔲 Integrar la base de datos con el sistema de gestión de stock.
@@ -90,6 +97,8 @@ Desarrollar una plataforma de comercio electrónico que permita controlar la ges
 
 -   🔲 Realizar pruebas unitarias en el código.
 -   🔲 Realizar pruebas funcionales de la plataforma.
+-   🔲 Realizar pruebas de usabilidad en el Front-End.
+-   🔲 Realizar pruebas de navegacion del usuario.
 -   🔲 Evaluar la experiencia del usuario en el Front-End.
 
 ### Implementación
