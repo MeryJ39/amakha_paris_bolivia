@@ -44,3 +44,10 @@ Route::middleware(['auth'])->group(function () {
         return view('Web.Tienda.consultant', compact('products'));
     })->name('consultant.index')->middleware('check.consultant');
 });
+
+use App\Http\Controllers\OrderController;
+
+Route::post('/orders', [OrderController::class, 'store']);
+// En routes/web.php
+Route::post('/checkout/process', [OrderController::class, 'process'])->name('checkout.process');
+

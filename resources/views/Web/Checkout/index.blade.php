@@ -16,31 +16,14 @@
         <div>
             <h3 class="text-xl font-bold">Total a pagar: ${{ $totalAmount }}</h3>
 
-            <div id="paypal-button-container" class="mt-5"></div>
+            <form action="{{ route('checkout.process') }}" method="POST">
+                @csrf
+                <input type="hidden" name="total_amount" value="{{ $totalAmount }}">
+                <input type="hidden" name="cart_items" value="{{ json_encode($cartCollection) }}">
+                <button type="submit" class="mt-5 bg-blue-500 text-white px-4 py-2 rounded">Realizar Pago</button>
+            </form>
+
         </div>
     </div>
 </div>
-
-<!-- PayPal SDK -->
-<script src="https://www.paypal.com/sdk/js?client-id={{ env('PAYPAL_CLIENT_ID') }}&currency=USD"></script>
-
-<script>
-    paypal.Buttons({
-        createOrder: function(data, actions) {
-            return actions.order.create({
-                purchase_units: [{
-                    amount: {
-                        value: '{{ $totalAmount }}' // Total amount to be paid
-                    }
-                }]
-            });
-        },
-        onApprove: function(data, actions) {
-            return actions.order.capture().then(function(details) {
-                // Redirige al usuario para procesar el pedido
-                window.location.href = '{{ route("checkout.process") }}?orderID=' + data.orderID;
-            });
-        }
-    }).render('#paypal-button-container');
-</script>
 @endsection
