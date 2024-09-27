@@ -51,3 +51,29 @@ Route::post('/orders', [OrderController::class, 'store']);
 // En routes/web.php
 Route::post('/checkout/process', [OrderController::class, 'process'])->name('checkout.process');
 
+
+
+// Institucional
+Route::get('/quienes-somos', function () {
+    return view('Web.Partials.footer.quienes-somos'); // Actualiza según la ubicación real
+});
+Route::get('/mapa-del-sitio', function () {
+    return view('Web.Partials.footer.mapa-del-sitio'); // Actualiza según la ubicación real
+});
+Route::get('/nuestro-catalogo', function () {
+    return view('Web.Partials.footer.catalogo'); // Mantiene esta vista
+});
+
+// Ayuda
+Route::get('/politica-de-privacidad', function () {
+    return view('Web.Partials.footer.politica-privacidad'); // Actualiza según la ubicación real
+});
+Route::get('/cambios-devoluciones', function () {
+    return view('Web.Partials.footer.cambios-devoluciones'); // Actualiza según la ubicación real
+});
+Route::get('/condiciones-de-uso', function () {
+    return view('Web.Partials.footer.condiciones-uso'); // Actualiza según la ubicación real
+});
+Route::get('/contactenos', function () {
+    return view('Web.Partials.footer.contactenos'); // Actualiza según la ubicación real
+});
