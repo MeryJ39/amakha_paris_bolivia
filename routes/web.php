@@ -77,3 +77,12 @@ Route::get('/condiciones-de-uso', function () {
 Route::get('/contactenos', function () {
     return view('Web.Partials.footer.contactenos'); // Actualiza según la ubicación real
 });
+
+
+use App\Http\Controllers\ProductController;
+Route::get('/search', [ProductController::class, 'search'])->name('products.search');
+// routes/api.php
+Route::get('/products', [ProductController::class, 'index']);
+
+
+Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');

@@ -1,9 +1,6 @@
 @extends('welcome')
 
-@section('titulo', 'Obed Sánchez | Tienda')
-@section('imagen', 'storage/img/uploads/blog-tecnologia-informatica-redes.jpg')
-@section('url', '')
-@section('estracto', 'Bienvenido a mi blog oficial, sitio dedicado a la tienda')
+
 
 @section('contenido')
 <div class="p-4">
@@ -83,26 +80,3 @@
 </div>
 @endsection
 
-@push('estilos')
-<link rel="stylesheet" href="{{ URL::asset('FrontEnd/css/tienda.css') }}">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
-@endpush
-
-@push('scripts')
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-<script>
-    $(document).ready(function(){
-        $('.slick-carousel').slick({
-            dots: true,
-            infinite: true,
-            speed: 500,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            autoplay: true,
-            autoplaySpeed: 3000,
-        });
-    });
-</script>
-@endpush

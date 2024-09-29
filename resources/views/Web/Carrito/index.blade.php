@@ -104,6 +104,4 @@
     </div>
 </div>
 @endsection
-@push('estilos')
-<link rel="stylesheet" href="{{ URL::asset('FrontEnd/css/tienda.css') }}">
-@endpush
+
