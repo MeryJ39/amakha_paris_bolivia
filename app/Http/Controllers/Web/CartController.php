@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Models\Category;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,12 +22,16 @@ class CartController extends Controller
     public function index(){
         $userId = Auth::user();
         $products = Product::all();
-        return view('Web.Tienda.index',compact('products','userId'));
+        // Carga todas las categorías principales y sus subcategorías
+        $categories = Category::with('subcategories', 'products')->whereNull('parent_id')->get();
+        return view('Web.Tienda.index',compact('products', 'userId', 'categories'));
     }
     public function cart()  {
         $userId = Auth::user();
         $cartCollection = \Cart::session($userId)->getContent();
-        return view('Web.Carrito.index',compact('userId','cartCollection'));
+        // Carga todas las categorías principales y sus subcategorías
+        $categories = Category::with('subcategories', 'products')->whereNull('parent_id')->get();
+        return view('Web.Carrito.index',compact('userId','cartCollection', 'categories'));
     }
     public function remove(Request $request){
         $userId = Auth::user();

@@ -56,45 +56,59 @@
             </div>
 
             <!-- Menu Items -->
-            <ul class="flex flex-col lg:text-center md:flex-row md:justify-center md:items-center p-4 md:p-0 mt-4 font-medium bg-gray-50 dark:bg-gray-800 w-full">
-                <li class="w-full"><a href="#" class="block py-2 px-3 hover:text-primary">Perfumería</a></li>
-                <li class="w-full"><a href="#" class="block py-2 px-3 hover:text-primary">Cabello</a></li>
-                <li class="w-full"><a href="#" class="block py-2 px-3 hover:text-primary">Reventa</a></li>
-                <li class="w-full relative">
-                    <button id="dropdownPromociones" data-dropdown-toggle="dropdownPromocionesMenu" class="block w-full py-2 px-3 hover:text-primary flex justify-between items-center">
-                        Promociones
-                        <svg class="w-2.5 h-2.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                        </svg>
-                    </button>
-                    <!-- Dropdown menu -->
-                    <div id="dropdownPromocionesMenu" class="hidden absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg z-10">
-                        <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownPromociones">
-                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Descuentos de Verano</a></li>
-                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Ofertas del Día</a></li>
-                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Nuevas Llegadas</a></li>
+            <ul class="flex flex-col lg:text-center md:flex-row md:justify-center md:items-center p-4 md:p-0 mt-2 font-normal text-sm bg-gray-50 dark:bg-gray-800 w-full">
 
+                @foreach($categories as $category)
+            <li class="w-max relative">
+                <button id="dropdown{{ $category->id }}" data-dropdown-toggle="dropdownMenu{{ $category->id }}" class=" w-full py-2 px-3 hover:text-primary flex justify-between items-center">
+                    {{ $category->name }}
+                    <svg class="w-2.5 h-2.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                    </svg>
+                </button>
+                <!-- Dropdown menu -->
+                <div id="dropdownMenu{{ $category->id }}" class="hidden absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg z-10">
+                    <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdown{{ $category->id }}">
+                        @foreach($category->subcategories as $subcategory)
+                            <li>
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">{{ $subcategory->name }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </li>
+        @endforeach
 
-
-
-                        </ul>
-                    </div>
-                </li>
 
                 @if(Auth::check() && Auth::user()->usertype === 'consultant')
-                    <li class="w-full"><a href="{{ route('consultant.index') }}" class="block py-2 px-3 hover:text-primary">Consultores</a></li>
+                    <li class="w-max relative"><a href="{{ route('consultant.index') }}" class="block py-2 px-3 hover:text-primary">Consultores</a></li>
                 @endif
 
-                @auth
-                    <li class="w-full"><a href="{{ url('/dashboard') }}" class="block py-2 px-3 hover:text-primary">Dashboard</a></li>
-                @else
-                    <li class="w-full"><a href="{{ route('login') }}" class="block py-2 px-3 hover:text-primary">Login</a></li>
-                    @if (Route::has('register'))
-                        <li class="w-full"><a href="{{ route('register') }}" class="block py-2 px-3 hover:text-primary">Register</a></li>
-                    @endif
-                @endauth
+                <li class="w-max">
+                    <a href="{{ auth()->check() ? url('/dashboard') : route('login') }}" class="flex items-center">
+                        <button class="bg-primary hover:bg-background  p-2 rounded-lg flex items-center">
+                            <i class="fa-regular fa-user mr-2"></i>
+                            <div class="flex flex-col text-left">
+                                <span class="text-sm font-light  truncate">{{ auth()->check() ? 'Mi Perfil' : 'MI CUENTA' }}</span>
+                                <small class="text-xs font-light text-gray-700   truncate">{{ auth()->check() ? '' : 'LogIn or SignUp' }}</small>
+                            </div>
+                        </button>
+                    </a>
+                </li>
 
-                <li class="w-full">
+
+
+
+
+
+
+
+
+
+
+
+
+                <li class="w-max  ">
                     <a href="{{ route('cart.index') }}" class="flex lg:justify-center py-2 px-3 text-gray-900 hover:bg-gray-100 rounded md:hover:bg-transparent md:hover:text-primary dark:text-white dark:hover:bg-gray-700 dark:hover:text-white">
                         <img src="https://amakha.vtexassets.com/assets/vtex/assets-builder/amakha.store-theme/5.0.10/icons/cart___159c0b8138ad35c56bce80457e0564a2.svg" alt="Cart" class="mx-2">
                         @if(Auth::check())

@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('description');
+            $table->string('name'); // Nombre de la categoría
+            $table->unsignedBigInteger('parent_id')->nullable(); // Para categorías hijas
             $table->timestamps();
         });
     }

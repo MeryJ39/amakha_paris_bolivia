@@ -9,7 +9,7 @@ export default {
     theme: {
         extend: {
             colors: {
-                primary: "#F29F05", // Amarillo
+                primary: "#ffb802", // Amarillo
                 background: "#F2F2F2", // Fondo claro
                 text: "#010440", // Azul oscuro
                 secondary: "#1F2624", // Verde oscuro

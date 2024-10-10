@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,15 +25,19 @@ class CheckoutController extends Controller
         $cartCollection = \Cart::session(Auth::user())->getContent();
         // Calcular el total del carrito
         $totalAmount = \Cart::session(Auth::user())->getTotal();
+        // Carga todas las categorías principales y sus subcategorías
+        $categories = Category::with('subcategories', 'products')->whereNull('parent_id')->get();
 
         // Retornar la vista del checkout con los productos en el carrito y el total
-        return view('Web.Checkout.index', compact('cartCollection', 'totalAmount'));
+        return view('Web.Checkout.index', compact('cartCollection', 'totalAmount', 'categories'));
     }
 
     public function process(Request $request)
     {
         $userId = Auth::id();
         $orderID = $request->query('orderID');
+        // Carga todas las categorías principales y sus subcategorías
+        $categories = Category::with('subcategories', 'products')->whereNull('parent_id')->get();
 
         // Validar el ID de la orden con la API de PayPal
         $response = Http::withBasicAuth(env('PAYPAL_CLIENT_ID'), env('PAYPAL_SECRET'))

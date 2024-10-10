@@ -29,6 +29,22 @@
     <button class="slick-next">Next</button>
 </div>
 
+
+<h1>{{ $category->name }}</h1>
+    <h2>Productos</h2>
+    <ul>
+        @foreach($category->products as $product)
+            <li>{{ $product->name }}</li>
+        @endforeach
+    </ul>
+
+    <h2>Subcategorías</h2>
+    <ul>
+        @foreach($category->subcategories as $subcategory)
+            <li>{{ $subcategory->name }}</li>
+        @endforeach
+    </ul>
+
 <div id="tienda" class="container mx-auto px-4 py-6">
     <div class="text-center mb-6">
         <h4 class="text-2xl font-semibold">Productos en Oferta</h4>
