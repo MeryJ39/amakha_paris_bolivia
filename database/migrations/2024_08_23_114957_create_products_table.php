@@ -28,7 +28,7 @@ return new class extends Migration
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
 
-            $table->unsignedInteger('brand_id')->unsigned();
+            $table->unsignedInteger('brand_id')->nullable();
             $table->string('image_path');
             $table->timestamps();
         });
