@@ -29,16 +29,25 @@
                 </ul>
             </div>
 
-            <!-- Servicio -->
-            <div>
-                <h5 class="font-semibold mb-4">SERVICIO</h5>
-                <ul class="space-y-2">
-                    <li><span class="text-sm">Teléfono: (11) 2388-8203</span></li>
-                    <li><span class="text-sm">Correo: soporte@amakhaparis.com.br</span></li>
-                    <li><span class="text-sm">Sede de AMAKHA PARIS</span></li>
-                    <li><span class="text-sm">R. do Sacramento, 522 São Bernardo do Campo – SP 09640-000</span></li>
-                    <li><span class="text-sm">CNPJ: 28.707.475/0001-31</span></li>
-                </ul>
+            <!-- Servicio y texto a la par -->
+            <div class="flex flex-col">
+                <!-- Columna de Servicio -->
+                <div class="flex-1">
+                    <h5 class="font-semibold mb-4">SERVICIO</h5>
+                    <ul class="space-y-2">
+                        <li><span class="text-sm">Teléfono: +591 78 133 857</span></li>
+                        <li><span class="text-sm">Correo: soporte@amakhaparis.com.bo</span></li>
+                        <li><span class="text-sm">Punto de Apoyo AMAKHA PARIS BOLIVIA</span></li>
+                        <li><span class="text-sm">Comercial Indana Santa Cruz de la Sierra</span></li>
+                    </ul>
+                </div>
+
+                <!-- Columna de texto adicional alineado a la izquierda -->
+                <div class="flex-1 mt-4">
+                    <ul class="space-y-2">
+                        <li><span class="text-sm">Esta página pertenece a Consultora Independiente de Amakha Paris, NO ES UNA PÁGINA OFICIAL DE LA EMPRESA</span></li>
+                    </ul>
+                </div>
             </div>
         </div>
 
