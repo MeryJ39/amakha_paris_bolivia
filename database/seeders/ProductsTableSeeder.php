@@ -19,7 +19,9 @@ class ProductsTableSeeder extends Seeder
             'details' => 'Sachets de mel capilar para cuidado del cabello',
             'description' => 'Sachets de mel capilar de 300g, ideal para tratamiento intensivo del cabello.',
             'price' => 120.00,
-            'precio_venta' => 200.00,
+            'sale_price' => 220.00,
+            'discount' => 10.00,
+
             'shipping_cost' => 50.00,
             'sku' => 'CAP-MEL-300G',
             'stock' => 38,
@@ -33,7 +35,9 @@ class ProductsTableSeeder extends Seeder
             'details' => 'Condicionador de mel para el cabello',
             'description' => 'Condicionador de mel capilar en presentación de 300ml, para un cabello suave y manejable.',
             'price' => 80.00,
-            'precio_venta' => 150.00,
+            'sale_price' => 120.00,
+            'discount' => 10.00,
+
             'shipping_cost' => 30.00,
             'sku' => 'COND-MEL-300ML',
             'stock' => 31,
@@ -47,7 +51,9 @@ class ProductsTableSeeder extends Seeder
             'details' => 'Shampoo y gel de ducha 3 en 1',
             'description' => 'Shampoo y gel de ducha 3 en 1 para cabello, barba y cuerpo en presentación de 300ml.',
             'price' => 100.00,
-            'precio_venta' => 180.00,
+            'sale_price' => 120.00,
+            'discount' => 10.00,
+
             'shipping_cost' => 40.00,
             'sku' => 'SHAM-IMORTAL-300ML',
             'stock' => 23,
@@ -61,7 +67,9 @@ class ProductsTableSeeder extends Seeder
             'details' => 'Crema dental para una sonrisa perfecta',
             'description' => 'Crema dental Perfect Smile de 50g para una limpieza efectiva y blanqueamiento dental.',
             'price' => 60.00,
-            'precio_venta' => 120.00,
+            'sale_price' => 90.00,
+            'discount' => 10.00,
+
             'shipping_cost' => 20.00,
             'sku' => 'CREME-PERFECT-50G',
             'stock' => 58,
@@ -75,7 +83,9 @@ class ProductsTableSeeder extends Seeder
             'details' => 'Desodorante antitranspirante Fresh Cotton',
             'description' => 'Desodorante antitranspirante Fresh Cotton de 150ml para una protección duradera.',
             'price' => 75.00,
-            'precio_venta' => 140.00,
+            'sale_price' => 110.00,
+            'discount' => 10.00,
+
             'shipping_cost' => 25.00,
             'sku' => 'DESODOR-FRESH-150ML',
             'stock' => 34,
@@ -89,7 +99,9 @@ class ProductsTableSeeder extends Seeder
             'details' => 'Suplemento nutricional Steady Skin',
             'description' => 'Steady Skin en presentación de 90 cápsulas para mejorar la salud de la piel.',
             'price' => 200.00,
-            'precio_venta' => 350.00,
+            'sale_price' => 220.00,
+            'discount' => 10.00,
+
             'shipping_cost' => 60.00,
             'sku' => 'STEADY-SKIN-90CAP',
             'stock' => 40,
@@ -103,7 +115,9 @@ class ProductsTableSeeder extends Seeder
             'details' => 'Suplemento nutricional Blue Calm',
             'description' => 'Blue Calm en presentación de 30 cápsulas para promover la calma y el bienestar.',
             'price' => 150.00,
-            'precio_venta' => 280.00,
+            'sale_price' => 200.00,
+            'discount' => 10.00,
+
             'shipping_cost' => 50.00,
             'sku' => 'BLUE-CALM-30CAP',
             'stock' => 27,
@@ -117,7 +131,9 @@ class ProductsTableSeeder extends Seeder
             'details' => 'Suplemento nutricional Healthy Woman',
             'description' => 'Healthy Woman en presentación de 30 cápsulas de 500mg para el bienestar femenino.',
             'price' => 180.00,
-            'precio_venta' => 320.00,
+            'sale_price' => 220.00,
+            'discount' => 10.00,
+
             'shipping_cost' => 55.00,
             'sku' => 'HEALTHY-WOMAN-30CAP',
             'stock' => 22,
@@ -131,7 +147,9 @@ class ProductsTableSeeder extends Seeder
             'details' => 'Perfume masculino 521 VIP Black',
             'description' => 'Perfume masculino 521 VIP Black en presentación de 15ml para una fragancia sofisticada.',
             'price' => 250.00,
-            'precio_venta' => 400.00,
+            'sale_price' => 320.00,
+            'discount' => 10.00,
+
             'shipping_cost' => 70.00,
             'sku' => '521-VIP-BLK-15ML',
             'stock' => 117,
@@ -145,7 +163,9 @@ class ProductsTableSeeder extends Seeder
             'details' => 'Perfume femenino AMAKHA 521',
             'description' => 'Perfume femenino AMAKHA 521 en presentación de 15ml para una fragancia elegante.',
             'price' => 240.00,
-            'precio_venta' => 390.00,
+            'sale_price' => 320.00,
+            'discount' => 10.00,
+
             'shipping_cost' => 65.00,
             'sku' => 'AMAKHA-521-WOMAN-15ML',
             'stock' => 98,
@@ -159,7 +179,9 @@ class ProductsTableSeeder extends Seeder
             'details' => 'Perfume Fortune 15ml',
             'description' => 'Perfume Fortune en presentación de 15ml con una fragancia sofisticada.',
             'price' => 230.00,
-            'precio_venta' => 380.00,
+            'sale_price' => 320.00,
+            'discount' => 10.00,
+
             'shipping_cost' => 60.00,
             'sku' => 'FORTUNE-15ML',
             'stock' => 77,
@@ -173,7 +195,9 @@ class ProductsTableSeeder extends Seeder
             'details' => 'Perfume masculino 521 Sexy Men',
             'description' => 'Perfume masculino 521 Sexy Men en presentación de 15ml para una fragancia cautivadora.',
             'price' => 220.00,
-            'precio_venta' => 370.00,
+            'sale_price' => 250.00,
+            'discount' => 10.00,
+
             'shipping_cost' => 55.00,
             'sku' => '521-SEXY-MEN-15ML',
             'stock' => 92,
@@ -187,7 +211,9 @@ class ProductsTableSeeder extends Seeder
             'details' => 'Gel redutor de medidas con mentol y cánfora',
             'description' => 'Gel redutor de medidas con mentol y cánfora en presentación de 500g para reducción de medidas y tonificación.',
             'price' => 180.00,
-            'precio_venta' => 320.00,
+            'sale_price' => 220.00,
+            'discount' => 10.00,
+
             'shipping_cost' => 55.00,
             'sku' => 'GEL-REDUCTOR-500G',
             'stock' => 49,
@@ -201,7 +227,9 @@ class ProductsTableSeeder extends Seeder
             'details' => 'Creme antiarrugas con FPS 30',
             'description' => 'Creme antienvejecimiento Hyalu Day-Skin Alpha de 30g con protección solar FPS 30.',
             'price' => 220.00,
-            'precio_venta' => 370.00,
+            'sale_price' => 330.00,
+            'discount' => 10.00,
+
             'shipping_cost' => 60.00,
             'sku' => 'HYALU-DAY-30G',
             'stock' => 20,
@@ -209,5 +237,21 @@ class ProductsTableSeeder extends Seeder
             'brand_id' => 6,
             'image_path' => 'Imagen (7).webp'
         ]);
+        Product::create([
+            'name' => 'Producto de Prueba',
+            'slug' => 'producto-de-prueba',
+            'details' => 'Producto diseñado para pruebas de pago',
+            'description' => 'Este es un producto de prueba para verificar el funcionamiento de la pasarela de pagos.',
+            'price' => 1.00,
+            'shipping_cost' => 1.00,
+            'sku' => 'PRUEBA-001',
+            'stock' => 100,
+            'category_id' => 1, // Asegúrate de que la categoría exista
+            'brand_id' => 1, // Asegúrate de que la marca exista
+            'image_path' => 'Imagen (7).webp',
+            'sale_price' => 1.00,
+            'discount' => 0.00
+        ]);
+
     }
 }

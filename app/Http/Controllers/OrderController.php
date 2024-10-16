@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Log;
 use App\Models\OrderItem;
 use Illuminate\Support\Facades\Http;
 
+use Illuminate\Support\Str;
 
 
 
@@ -50,13 +51,10 @@ class OrderController extends Controller
 
     public function process(Request $request)
 {
-    // Debug: Verifica qué datos llegan al controlador
-    Log::info('Datos recibidos en el checkout:', $request->all());
-
     // Validar los datos
     $request->validate([
         'total_amount' => 'required|numeric',
-        'cart_items' => 'required|json', // Validar que cart_items sea JSON
+        'cart_items' => 'required|json',
     ]);
 
     // Obtener el usuario autenticado
@@ -69,34 +67,45 @@ class OrderController extends Controller
         'status' => 'pending',
     ]);
 
+    // Preparar los datos para la API de Libélula
+    $libelulaData = [
+        'appkey' => '11bb10ce-68ba-4af1-8eb7-4e6624fed729',
+        'email_cliente' => $user->email,
+        'identificador' => (string) Str::uuid(), // Generar un UUID único
+        'callback_url' => 'http://www.misitioweb.com/api/pago-exitoso?id=' . $order->id,
+        'url_retorno' => 'http://www.misitioweb.com/carrito-compras?id=' . $order->id,
+        'descripcion' => 'Pago Compra Online',
+        'nombre_cliente' => $user->name,
+        'apellido_cliente' => 'Gutierrez',
+        'nit' => '33221144',
+        'razón_social' => 'CGuiterrez',
+        'ci' => '321654987',
+        'fecha_vencimiento' => '2024-12-31 23:59',
+        'lineas_detalle_deuda' => [] // Asegúrate de inicializarlo como un array
+    ];
+
     // Decodificar los artículos del carrito
     $cartItems = json_decode($request->cart_items, true);
 
-    // Agregar los elementos de la orden
+    // Agregar los elementos de la orden y llenar `lineas_detalle_deuda`
     foreach ($cartItems as $item) {
         OrderItem::create([
             'order_id' => $order->id,
-            'product_id' => $item['id'], // Asumimos que 'id' es el ID del producto
-            'quantity' => $item['quantity'], // Cantidad
-            'price' => $item['price'], // Precio
+            'product_id' => $item['id'],
+            'quantity' => $item['quantity'],
+            'price' => $item['price'],
         ]);
+
+        $libelulaData['lineas_detalle_deuda'][] = [
+            'concepto' => (string) $item['name'], // Asegúrate de que el nombre del producto esté disponible
+            'cantidad' => (int) $item['quantity'],
+            'costo_unitario' => (float) $item['price'],
+            'descuento_unitario' => 0, // Cambia esto si hay descuentos
+        ];
     }
 
-    // Preparar los datos para la API de Libélula
-    $libelulaData = [
-        'appkey' => '588e5e10-d794-4910-91d2-b3952b54df4d',
-        'email_cliente' => $user->email, // Correo del cliente
-        'identificador_deuda' => (string) $order->id, // ID de la orden como identificador
-        'descripcion' => 'Pago Compra Online', // Descripción de la deuda
-        'lineas_detalle_deuda' => array_map(function($item) {
-            return [
-                'concepto' => (string) $item['name'], // Nombre del producto
-                'cantidad' => (int) $item['quantity'], // Asegúrate que sea un entero
-                'costo_unitario' => (float) $item['price'], // Precio como decimal
-                'descuento_unitario' => 0, // Agrega si hay algún descuento
-            ];
-        }, $cartItems),
-    ];
+    // Debug: Loguear los datos que se enviarán a la API
+    Log::info('Datos enviados a la API de Libélula:', $libelulaData);
 
     // Enviar solicitud a la API de Libélula
     $response = Http::post('https://api.libelula.bo/rest/deuda/registrar', $libelulaData);
@@ -107,10 +116,8 @@ class OrderController extends Controller
 
         // Verificar si hay un error
         if ($responseData['error'] === 0) {
-            // Redirigir al usuario a la URL de la pasarela de pagos
             return redirect($responseData['url_pasarela_pagos']);
         } else {
-            // Si hay un error, loguear y retornar el mensaje completo
             Log::error('Error al registrar el pago en Libélula: ', $responseData);
 
             return response()->json([
@@ -119,11 +126,10 @@ class OrderController extends Controller
                 'order_id' => $order->id,
                 'total' => $order->total,
                 'status' => $order->status,
-                'full_response' => $responseData // Muestra la respuesta completa
+                'full_response' => $responseData
             ], 500);
         }
     } else {
-        // Manejo de errores en la solicitud
         Log::error('Error al registrar el pago en Libélula: ', $response->json());
 
         return response()->json([
@@ -131,10 +137,14 @@ class OrderController extends Controller
             'order_id' => $order->id,
             'total' => $order->total,
             'status' => $order->status,
-            'full_response' => $response->json() // Muestra la respuesta completa de la solicitud
+            'full_response' => $response->json()
         ], 500);
     }
 }
+
+
+
+
 
 
 

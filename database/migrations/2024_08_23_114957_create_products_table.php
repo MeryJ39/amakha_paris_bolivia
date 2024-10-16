@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('details')->nullable();
             $table->text('description')->nullable();
             $table->double('price');
-            $table->double('precio_venta');
+            $table->double('sale_price'); // Cambiado a sale_price
+            $table->double('discount')->nullable(); // Campo descuento añadido
             $table->double('shipping_cost')->nullable();
             $table->string('sku')->nullable();
             $table->integer('stock')->nullable();
