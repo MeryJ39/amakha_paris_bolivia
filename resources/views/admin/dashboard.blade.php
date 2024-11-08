@@ -73,7 +73,7 @@
     </div>
 
     <footer class="bg-gray-800 text-white text-center p-4 mt-6">
-        <p>&copy; {{ date('Y') }} Tu Tienda eCommerce</p>
+        <p>&copy; {{ date('Y') }}Tienda eCommerce</p>
     </footer>
 
     <!-- Font Awesome for icons -->
