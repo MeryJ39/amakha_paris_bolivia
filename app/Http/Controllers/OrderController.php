@@ -72,8 +72,8 @@ class OrderController extends Controller
         'appkey' => '11bb10ce-68ba-4af1-8eb7-4e6624fed729',
         'email_cliente' => $user->email,
         'identificador' => (string) Str::uuid(), // Generar un UUID único
-        'callback_url' => 'http://www.misitioweb.com/api/pago-exitoso?id=' . $order->id,
-        'url_retorno' => 'http://www.misitioweb.com/carrito-compras?id=' . $order->id,
+        'callback_url' => 'https://www.amakhaparis.com.bo/api/pago-exitoso?id=' . $order->id,
+        'url_retorno' => 'http://127.0.0.1:8000/',
         'descripcion' => 'Pago Compra Online',
         'nombre_cliente' => $user->name,
         'apellido_cliente' => 'Gutierrez',

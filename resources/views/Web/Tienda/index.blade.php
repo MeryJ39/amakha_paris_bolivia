@@ -52,7 +52,7 @@
 
 <div id="tienda" class="container mx-auto px-4 py-6">
     <div class="text-center mb-6">
-        <h4 class="text-2xl font-semibold">Productos</h4>
+        <h4 class="text-2xl font-semibold">Productoss</h4>
         <hr class="my-4 border-gray-300">
     </div>
 
