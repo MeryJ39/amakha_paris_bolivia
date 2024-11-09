@@ -7,122 +7,60 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Sobre el Proyecto
+## About Laravel
 
-Este proyecto tiene como objetivo desarrollar una plataforma de comercio electrónico para la distribuidora Amakha Paris Bolivia. A pesar de su crecimiento reciente en el mercado, la empresa enfrenta desafíos en la gestión de pedidos y ventas a través de métodos tradicionales, como WhatsApp. Esta plataforma busca optimizar esos procesos y mejorar la experiencia del cliente.
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-## Tabla de Contenidos
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-1. [Descripción del Proyecto](#descripción-del-proyecto)
-2. [Planteamiento del Problema](#planteamiento-del-problema)
-3. [Objetivos](#objetivos)
-4. [Tecnologías Utilizadas](#tecnologías-utilizadas)
-5. [Instalación](#instalación)
-6. [Checklist de Tareas](#checklist-de-tareas)
-7. [Uso](#uso)
-8. [Contribuciones](#contribuciones)
-9. [Licencia](#licencia)
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Descripción del Proyecto
+## Learning Laravel
 
-La plataforma desarrollada permitirá a Amakha Paris Bolivia gestionar sus pedidos y ventas de manera eficiente, integrando un catálogo interactivo en línea que mejorará la experiencia del cliente y optimizará los procesos internos de la empresa.
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-## Planteamiento del Problema
+You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-La distribuidora enfrenta múltiples desafíos en su operación actual:
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
--   **Falta de un catálogo online**: Los clientes dependen de WhatsApp para hacer pedidos, lo que puede causar complicaciones en la gestión de los mismos.
--   **Dificultades en la gestión de stock**: La ausencia de información actualizada sobre disponibilidad de productos afecta la satisfacción del cliente.
--   **Ineficiencias en la comunicación**: Respuestas lentas y cambios constantes en los pedidos generan confusión y frustración.
+## Laravel Sponsors
 
-### Formulación del Problema
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-**¿De qué manera se puede mejorar la gestión de pedidos y ventas de la distribuidora Amakha Paris Bolivia?**
+### Premium Partners
 
-## Objetivos
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[WebReinvent](https://webreinvent.com/)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+- **[Jump24](https://jump24.co.uk)**
+- **[Redberry](https://redberry.international/laravel/)**
+- **[Active Logic](https://activelogic.com)**
+- **[byte5](https://byte5.de)**
+- **[OP.GG](https://op.gg)**
 
-### Objetivo General
+## Contributing
 
-Desarrollar una plataforma de comercio electrónico que permita controlar la gestión de pedidos y ventas online de Amakha Paris Bolivia.
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-### Objetivos Específicos
+## Code of Conduct
 
--   Diagnosticar los procesos actuales involucrados en pedidos y ventas.
--   Seleccionar la metodología y herramientas tecnológicas adecuadas.
--   Diseñar los componentes de Front-End y Back-End para la gestión de pedidos y ventas.
--   Realizar pruebas exhaustivas a la plataforma.
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Tecnologías Utilizadas
+## Security Vulnerabilities
 
--   **Framework**: Laravel
--   **Servidor local**: XAMPP
--   **Base de datos**: MySQL
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## Instalación
+## License
 
-1. Clona este repositorio:
-    ```bash
-    git clone https://github.com/tu_usuario/amakhaparisecommerce.git
-    ```
-
-## Checklist de Tareas
-
-### Preparación y Configuración
-
--   ✅ Clonar el repositorio del proyecto.
--   ✅ Instalar dependencias necesarias con Composer.
--   ✅ Configurar el entorno local (XAMPP).
--   ✅ Crear y configurar la base de datos MySQL.
-
-### Diagnóstico y Planificación
-
--   ✅ Diagnosticar los procesos actuales de pedidos y ventas.
--   ✅ Identificar y seleccionar metodologías y herramientas tecnológicas.
-
-### Desarrollo
-
--   🔲 Diseñar componentes de Front-End para el catálogo y gestión de pedidos.
--   🔲 Realizar em mapeo de enlaces en el footer.
--   🔲 Implementar la funcionalidad completa del Header.
--   🔲 Mejorar la UI/UX de los botones de autenticacion.
--   🔲 Personalizar la interface de Autenticacion de Usuarios(inspirarse del original/boton registrarse).
--   🔲 Implementar la vista del Perfil de Usuarios(anadir direcciones/aumentar perfil/pedidos)
--   🔲 Implementar panel de administracion(ventasxmes/pedidos pendientes/nesclientsxm/bestsellers/).
--   🔲 Agregar al panel las pestanas: Productos(categorias), pedidos, soporte , usuarios, config-page.
--   🔲 Implementar Back-End para la gestión de ventas y pedidos.
--   🔲 Configurar rutas y controladores en Laravel.
--   🔲 Integrar la base de datos con el sistema de gestión de stock.
-
-### Pruebas
-
--   🔲 Realizar pruebas unitarias en el código.
--   🔲 Realizar pruebas funcionales de la plataforma.
--   🔲 Realizar pruebas de usabilidad en el Front-End.
--   🔲 Realizar pruebas de navegacion del usuario.
--   🔲 Evaluar la experiencia del usuario en el Front-End.
-
-### Implementación
-
--   🔲 Desplegar la aplicación en un servidor de producción.
--   🔲 Configurar el dominio y SSL (si es necesario).
-
-### Mantenimiento
-
--   🔲 Monitorear el rendimiento de la plataforma.
--   🔲 Actualizar el sistema y las dependencias según sea necesario.
--   🔲 Recolectar feedback de usuarios para futuras mejoras.
-
-### Documentación
-
--   🔲 Documentar el proceso de instalación y uso de la plataforma.
--   🔲 Crear una guía para futuros desarrolladores sobre la estructura del proyecto.
-
-### Contribuciones
-
--   🔲 Establecer un canal de comunicación para contribuciones externas.
--   🔲 Revisar y aceptar pull requests de colaboradores.
-
-### Finalización
-
--   🔲 Revisar que todos los objetivos del proyecto se hayan cumplido.
--   🔲 Publicar la versión final de la plataforma.
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

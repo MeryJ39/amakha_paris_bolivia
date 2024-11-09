@@ -1,24 +1,20 @@
+import defaultTheme from 'tailwindcss/defaultTheme';
+
 /** @type {import('tailwindcss').Config} */
 export default {
     content: [
-        "./resources/**/*.blade.php",
-        "./resources/**/*.js",
-        "./resources/**/*.vue",
-        "./node_modules/flowbite/**/*.js",
+        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+        './storage/framework/views/*.php',
+        './resources/**/*.blade.php',
+        './resources/**/*.js',
+        './resources/**/*.vue',
     ],
     theme: {
         extend: {
-            colors: {
-                primary: "#ffb802", // Amarillo
-                background: "#F2F2F2", // Fondo claro
-                text: "#010440", // Azul oscuro
-                secondary: "#1F2624", // Verde oscuro
-                accent: "#4C5954", // Gris verdoso
-            },
             fontFamily: {
-                sans: ["TT Firs Neue", "sans-serif"],
+                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
         },
     },
-    plugins: [require("flowbite/plugin")],
+    plugins: [],
 };
