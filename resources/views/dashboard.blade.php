@@ -10,6 +10,12 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("You're logged in!") }}
+
+                    <!-- Mostrar el rol del usuario autenticado -->
+                    <div class="mt-4">
+                        <strong>{{ __("Role:") }}</strong>
+                        <span>{{ Auth::user()->role->name }}</span>
+                    </div>
                 </div>
             </div>
         </div>

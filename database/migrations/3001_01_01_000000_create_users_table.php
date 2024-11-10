@@ -19,8 +19,13 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+
+            // Agregar columna role_id
+            $table->unsignedBigInteger('role_id')->default(3); // Por defecto, asignamos el rol 'cliente' (id=3)
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
         });
 
+        // Crear otras tablas como 'password_reset_tokens' y 'sessions'
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
             $table->string('token');

@@ -4,7 +4,12 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/shop');  // Redirige a la tienda directamente
+});
+
+// Ruta para la tienda
+Route::get('/shop', function () {
+    return view('shop.shop');  // Página de la tienda
 });
 
 Route::get('/dashboard', function () {

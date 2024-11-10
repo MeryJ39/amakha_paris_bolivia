@@ -1,4 +1,4 @@
-<!-- resources/views/layouts/app.blade.php -->
+<!-- resources/views/shop/app.blade.php -->
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
 <head>
@@ -13,13 +13,15 @@
     @endif
 </head>
 <body class="font-sans antialiased bg-gray-50 text-black dark:bg-black dark:text-white">
+
     <!-- Incluye el navbar -->
-    @include('layouts.navbar')
+    @include('shop.navbar')
 
     <!-- Contenido dinámico de la página -->
     @yield('content')
 
     <!-- Incluye el footer -->
-    @include('layouts.footer')
+    @include('shop.footer')
+
 </body>
 </html>
