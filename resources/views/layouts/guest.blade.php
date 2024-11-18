@@ -15,16 +15,14 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
-            <div>
-                <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                </a>
-            </div>
+        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-center bg-no-repeat bg-[url('https://res.cloudinary.com/dqyo3iajp/image/upload/v1731512398/wp1879450-perfume-wallpapers_gwi7wu.webp')] bg-gray-100 bg-blend-multiply dark:bg-gray-900">
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
+
+            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white bg-opacity-20 dark:bg-gray-800 dark:bg-opacity-40 backdrop-blur-lg shadow-lg rounded-lg overflow-hidden">
+
                 {{ $slot }}
             </div>
+
         </div>
     </body>
 </html>

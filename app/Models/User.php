@@ -2,14 +2,12 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
     /**
@@ -19,8 +17,11 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'last_name',  // Agregado el campo apellido
         'email',
         'password',
+        'phone',      // Agregado el campo teléfono
+        'role_id',    // Asegúrate de que role_id esté también aquí si vas a asignarlo en masa
     ];
 
     /**
@@ -46,7 +47,9 @@ class User extends Authenticatable
         ];
     }
 
-    // Define the relationship between User and Role
+    /**
+     * Define the relationship between User and Role
+     */
     public function role()
     {
         return $this->belongsTo(Role::class);

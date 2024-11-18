@@ -22,4 +22,36 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubcategoryController;
+use App\Http\Controllers\ProductController;
+
+Route::resource('categories', CategoryController::class);
+Route::resource('subcategories', SubcategoryController::class);
+Route::resource('products', ProductController::class);
+
+
+
+use App\Http\Controllers\CheckoutController;
+
+Route::middleware('auth')->group(function () {
+    // Ruta para mostrar el carrito de compras
+    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+
+    // Ruta para procesar el pago
+    Route::post('/checkout', [CheckoutController::class, 'process'])->name('checkout.process');
+});
+
+use Livewire\Livewire;
+
+
+
+    // Configuración de la ruta personalizada para Livewire
+    Livewire::setUpdateRoute(function ($handle) {
+        return Route::post('/livewire/update', $handle);
+    });
+
+
+
 require __DIR__.'/auth.php';

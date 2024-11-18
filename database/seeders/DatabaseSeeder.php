@@ -19,5 +19,16 @@ class DatabaseSeeder extends Seeder
 
         // Llamar al seeder de usuarios
         $this->call(UserSeeder::class);
+
+        // Llamar a los seeders
+        $this->call([
+            CategorySeeder::class,
+            SubcategorySeeder::class,
+            // Llama al seeder de productos cuando estés listo
+            ProductSeeder::class,
+        ]);
+
+        $this->call(CartItemsSeeder::class);
+
     }
 }

@@ -17,8 +17,16 @@ export default {
 
     theme: {
         extend: {
+            colors: {
+                primary: "#ffb802", // Amarillo
+                background: "#F2F2F2", // Fondo claro
+                text: "#010440", // Azul oscuro
+                secondary: "#1F2624", // Verde oscuro
+                accent: "#4C5954", // Gris verdoso
+            },
             fontFamily: {
                 sans: ["Figtree", ...defaultTheme.fontFamily.sans],
+                custom: ["PT Sans Caption", "sans-serif"],
             },
         },
     },

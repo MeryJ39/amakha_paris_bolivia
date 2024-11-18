@@ -11,6 +11,8 @@
     @else
         <style></style>
     @endif
+
+    @livewireStyles
 </head>
 <body class="font-sans antialiased bg-gray-50 text-black dark:bg-black dark:text-white">
     <!-- Incluye el navbar -->
@@ -21,5 +23,7 @@
 
     <!-- Incluye el footer -->
     @include('layouts.footer')
+    @livewireScripts
+
 </body>
 </html>
