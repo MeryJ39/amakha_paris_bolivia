@@ -37,6 +37,26 @@
                 </a>
             </li>
 
+            <!-- Gestión de Categorías -->
+            <li>
+                <a href="{{ route('admin.categories.index') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M4 4h16v16H4z"/>
+                    </svg>
+                    <span class="ms-3">Gestión de Categorías</span>
+                </a>
+            </li>
+
+            <!-- Gestión de Subcategorías -->
+            <li>
+                <a href="{{ route('admin.subcategories.index') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M4 4h16v16H4z"/>
+                    </svg>
+                    <span class="ms-3">Gestión de Subcategorías</span>
+                </a>
+            </li>
+
             <!-- Gestión de Productos (Nuevo Botón) -->
             <li>
                 <a href="{{ route('admin.products.index') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
@@ -44,6 +64,36 @@
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14h-2v-2h2v2zm0-4h-2V7h2v5z"/>
                     </svg>
                     <span class="ms-3">Gestión de Productos</span>
+                </a>
+            </li>
+
+            <!-- Gestión de Usuarios -->
+            <li>
+                <a href="{{ route('admin.users.index') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 12c2.209 0 4-1.791 4-4s-1.791-4-4-4-4 1.791-4 4 1.791 4 4 4zm0 2c-2.667 0-8 1.334-8 4v2h16v-2c0-2.666-5.333-4-8-4z"/>
+                    </svg>
+                    <span class="ms-3">Gestión de Usuarios</span>
+                </a>
+            </li>
+
+            <!-- Gestión de Roles -->
+            <li>
+                <a href="{{ route('admin.roles.index', 1) }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 12c2.209 0 4-1.791 4-4s-1.791-4-4-4-4 1.791-4 4 1.791 4 4 4zm0 2c-2.667 0-8 1.334-8 4v2h16v-2c0-2.666-5.333-4-8-4z"/>
+                    </svg>
+                    <span class="ms-3">Gestión de Roles</span>
+                </a>
+            </li>
+
+            <!-- Gestión de Descuentos (Nuevo Botón) -->
+            <li>
+                <a href="{{ route('admin.discounts.index') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M18 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm-1 2v12H7V4h10z"/>
+                    </svg>
+                    <span class="ms-3">Gestión de Descuentos</span>
                 </a>
             </li>
 

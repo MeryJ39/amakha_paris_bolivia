@@ -99,7 +99,47 @@ Route::prefix('admin')
         Route::resource('products', ProductManagementController::class);
         Route::post('products/{product}/update-stock', [ProductManagementController::class, 'updateStock'])
             ->name('products.updateStock');
-    });
+});
+
+
+
+use App\Http\Controllers\Admin\CategoryManagementController;
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    // Rutas para Categorías
+    Route::resource('categories', CategoryManagementController::class)->except(['show']); // No necesitamos 'show'
+
+    // Rutas para Subcategorías
+    Route::get('subcategories', [CategoryManagementController::class, 'indexSubcategory'])->name('subcategories.index'); // Agregar ruta index para listar subcategorías
+    Route::post('subcategories/store', [CategoryManagementController::class, 'storeSubcategory'])->name('subcategories.store');
+    Route::get('subcategories/create', [CategoryManagementController::class, 'createSubcategory'])->name('subcategories.create');
+    Route::get('subcategories/{subcategory}/edit', [CategoryManagementController::class, 'editSubcategory'])->name('subcategories.edit');
+    Route::put('subcategories/{subcategory}', [CategoryManagementController::class, 'updateSubcategory'])->name('subcategories.update');
+    Route::delete('subcategories/{subcategory}', [CategoryManagementController::class, 'destroySubcategory'])->name('subcategories.destroy');
+});
+
+
+
+use App\Http\Controllers\Admin\UserManagementController;
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    // Rutas para Usuarios
+    Route::resource('users', UserManagementController::class)->except(['show']); // Usamos resource pero excluimos show
+
+    // Rutas para los roles
+    Route::get('roles', [UserManagementController::class, 'indexRoles'])->name('roles.index'); // Ver todos los roles
+    Route::get('roles/{role}/edit', [UserManagementController::class, 'editRole'])->name('roles.edit'); // Editar un rol
+    Route::put('roles/{role}', [UserManagementController::class, 'updateRole'])->name('roles.update'); // Actualizar rol
+});
+
+
+
+use App\Http\Controllers\Admin\DiscountController;
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    // Rutas para los descuentos
+    Route::resource('discounts', DiscountController::class)->except(['show']);
+});
 
 
 
