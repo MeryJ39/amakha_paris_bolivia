@@ -33,6 +33,11 @@ Route::resource('products', ProductController::class);
 
 
 
+
+// Ruta para mostrar los detalles del producto usando el slug
+Route::get('/product/{slug}', [ProductController::class, 'productDetails'])->name('product.details');
+
+
 use App\Http\Controllers\CheckoutController;
 
 Route::middleware('auth')->group(function () {
@@ -42,6 +47,19 @@ Route::middleware('auth')->group(function () {
     // Ruta para procesar el pago
     Route::post('/checkout', [CheckoutController::class, 'process'])->name('checkout.process');
 });
+
+
+use App\Http\Controllers\OrderController;
+
+// Ruta para la confirmación del pedido
+Route::get('/confirmacion-pedido/{orderId}', [OrderController::class, 'showConfirmation'])->name('shop.confirmation');
+
+// Ruta para mostrar todos los pedidos del usuario
+Route::get('/orders', [OrderController::class, 'index'])->name('orders');
+
+// Ruta para mostrar el detalle de un pedido específico
+Route::get('/orders/{orderId}', [OrderController::class, 'show'])->name('orders.show');
+
 
 use Livewire\Livewire;
 

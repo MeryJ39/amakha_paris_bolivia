@@ -26,10 +26,10 @@ class CategoryController extends Controller
        $request->validate([
            'name' => 'required|string|max:255',
            'description' => 'nullable|string',
-           'image' => 'nullable|string',
        ]);
 
-       Category::create($request->all());
+       // Crear la nueva categoría sin el campo "image"
+       Category::create($request->only('name', 'description'));
 
        return redirect()->route('categories.index');
    }
@@ -54,11 +54,11 @@ class CategoryController extends Controller
        $request->validate([
            'name' => 'required|string|max:255',
            'description' => 'nullable|string',
-           'image' => 'nullable|string',
        ]);
 
        $category = Category::findOrFail($id);
-       $category->update($request->all());
+       // Actualizar la categoría sin el campo "image"
+       $category->update($request->only('name', 'description'));
 
        return redirect()->route('categories.index');
    }

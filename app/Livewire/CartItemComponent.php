@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\CartItem;
 use Illuminate\Support\Facades\DB;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class CartItemComponent extends Component
@@ -26,6 +27,8 @@ class CartItemComponent extends Component
         $this->productName = $cartItem->product->name;
         $this->productImage = $cartItem->product->image;
     }
+
+
 
     public function incrementQuantity(): void
     {
@@ -61,6 +64,7 @@ class CartItemComponent extends Component
 
         $this->dispatch('cartUpdated');
     }
+
 
     public function render()
     {

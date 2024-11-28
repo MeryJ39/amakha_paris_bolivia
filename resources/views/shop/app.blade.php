@@ -11,6 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&display=swap" rel="stylesheet">
 
+<script src="https://kit.fontawesome.com/6edb07306d.js" crossorigin="anonymous"></script>
 
 @livewireStyles
 
@@ -27,9 +28,12 @@
 </head>
 <body class="font-sans antialiased bg-gray-50 text-black dark:bg-black dark:text-white">
 
+    @php
+    $categories = App\Models\Category::with('subcategories')->get();
+@endphp
 
     <!-- Incluye el navbar -->
-    @include('shop.navbar')
+    @include('shop.navbar', ['categories' => $categories])
 
     <!-- Contenido dinámico de la página -->
     @yield('content')

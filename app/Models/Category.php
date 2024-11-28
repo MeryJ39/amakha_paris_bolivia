@@ -9,7 +9,8 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'image']; // Campos que pueden ser asignados masivamente
+    // Campos que pueden ser asignados masivamente, eliminando 'image'
+    protected $fillable = ['name', 'description'];
 
     // Relación con Subcategorías
     public function subcategories()

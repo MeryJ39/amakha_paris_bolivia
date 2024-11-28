@@ -1,7 +1,9 @@
+
+
 <nav class="bg-gray-50 border-b border-gray-200 dark:bg-gray-900">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <!-- Logo -->
-        <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
             <img src="https://amakha.vtexassets.com/assets/vtex/assets-builder/amakha.store-theme/5.0.10/images/logo___35e1d43974a5d6ba61da815c917cb1fc.png" alt="Logo" class="h-12" />
         </a>
 
@@ -42,25 +44,43 @@
                 <input type="text" id="search-navbar-mobile" class="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary" placeholder="Buscar...">
             </div>
 
-            <!-- Menu Items -->
             <ul class="flex flex-col lg:text-center md:flex-row md:justify-center md:items-center p-4 md:p-0 mt-2 font-normal text-sm bg-gray-50 dark:bg-gray-800 w-full">
+                @foreach($categories as $category)
+                <!-- Dropdown Label -->
+                <li class="relative w-max group">
+                    <label id="dropdownHoverButton-{{ $category->id }}" data-dropdown-toggle="dropdownHover-{{ $category->id }}" data-dropdown-trigger="hover"
+                           class="block text-gray-800 focus:outline-none font-medium text-sm px-4 py-2 cursor-pointer transition-colors duration-200 hover:text-primary">
+                        {{ $category->name }}
+                    </label>
 
-                <!-- Enlaces inventados (sin categorías) -->
-                <li class="w-max">
-                    <a href="#" class="block py-2 px-3 hover:text-primary">Inicio</a>
-                </li>
+                    <!-- Dropdown menu -->
+                    <div id="dropdownHover-{{ $category->id }}" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg w-44">
+                        <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownHoverButton-{{ $category->id }}">
 
-                <li class="w-max">
-                    <a href="#" class="block py-2 px-3 hover:text-primary">Productos</a>
-                </li>
+                            <!-- Subcategorías -->
+                            @foreach($category->subcategories as $subcategory)
+                                <li>
+                                    <a href="#" class="block px-4 py-2 hover:bg-yellow-100">{{ $subcategory->name }}</a>
+                                </li>
+                            @endforeach
 
-                <li class="w-max">
-                    <a href="#" class="block py-2 px-3 hover:text-primary">Ofertas</a>
-                </li>
 
-                <li class="w-max">
-                    <a href="#" class="block py-2 px-3 hover:text-primary">Sobre nosotros</a>
+                        </ul>
+                    </div>
                 </li>
+            @endforeach
+
+
+
+
+
+
+
+    <li class="w-max">
+        <a href="#" class="block py-2 px-3 hover:text-primary">Sobre nosotros</a>
+    </li>
+
+
 
 
 

@@ -65,6 +65,9 @@ class CartComponent extends Component
     public function handleCartUpdated(): void
     {
         $this->loadCartItems();
+        Log::info('Cart items updated:', $this->cartItems->toArray()); // Usamos toArray() para convertir la colección a un array
+
+
     }
 
     public function render()

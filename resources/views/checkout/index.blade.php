@@ -43,7 +43,6 @@
 
                     <!-- Aquí cargamos el CartComponent que se encargará de manejar todos los productos -->
                     <livewire:cart-component />
-
                 </div>
 
                 <!-- Formulario de checkout -->
@@ -53,31 +52,35 @@
                     <form action="{{ route('checkout.process') }}" method="POST">
                         @csrf
 
-                        <!-- Dirección de envío -->
+                        <!-- Selección de Dirección de envío -->
                         <div class="mb-6">
                             <label for="address" class="block text-sm font-medium text-gray-700">Dirección de envío</label>
-                            <input type="text" name="address" id="address" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" value="{{ old('address') }}" required>
+                            <select name="address" id="address" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
+                                <option value="" disabled selected>Selecciona una dirección</option>
+                                @foreach($addresses as $address)
+                                    <option value="{{ $address->id }}" {{ old('address') == $address->id ? 'selected' : '' }}>
+                                        {{ $address->address }}, {{ $address->city }}, {{ $address->department }} - Tel: {{ $address->phone_number }}
+                                    </option>
+                                @endforeach
+                            </select>
                             @error('address')
                                 <p class="text-sm text-red-600 mt-1">{{ $message }}</p>
                             @enderror
                         </div>
 
-                        <!-- Método de pago -->
+                        <!-- Método de pago: solo QR -->
+                        <input type="hidden" name="payment_method" value="qr">
+
                         <div class="mb-6">
-                            <label for="payment_method" class="block text-sm font-medium text-gray-700">Método de pago</label>
-                            <select name="payment_method" id="payment_method" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
-                                <option value="credit_card">Tarjeta de crédito</option>
-                                <option value="paypal">PayPal</option>
-                            </select>
-                            @error('payment_method')
-                                <p class="text-sm text-red-600 mt-1">{{ $message }}</p>
-                            @enderror
+                            <label for="qr_code" class="block text-sm font-medium text-gray-700">Escanear QR para pagar</label>
+
                         </div>
 
                         <!-- Botón de confirmación -->
                         <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:outline-none transition duration-200">Confirmar Compra</button>
                     </form>
                 </div>
+
             </div>
         </div>
 

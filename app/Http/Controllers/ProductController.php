@@ -84,4 +84,14 @@ class ProductController extends Controller
     $products = Product::with('ratings')->get(); // Obtener productos con sus calificaciones
     return view('products.index', compact('products'));
 }
+
+// Función para mostrar los detalles del producto por su slug
+public function productDetails($slug)
+{
+    // Buscar el producto por su slug
+    $product = Product::where('slug', $slug)->firstOrFail();
+
+    // Pasar el producto a la vista 'shop.productdetails'
+    return view('shop.productdetails', compact('product'));
+}
 }
