@@ -13,6 +13,9 @@
 
 <script src="https://kit.fontawesome.com/6edb07306d.js" crossorigin="anonymous"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+
 @livewireStyles
 
 

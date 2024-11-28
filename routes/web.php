@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Models\Order;
+use App\Models\Product;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -13,7 +16,23 @@ Route::get('/shop', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    // Resumen de ventas (total por día, semana, mes)
+    $todaySales = Order::whereDate('created_at', Carbon::today())->sum('total_amount');
+    $weeklySales = Order::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->sum('total_amount');
+    $monthlySales = Order::whereMonth('created_at', Carbon::now()->month)->sum('total_amount');
+
+    // Productos con bajo stock o agotados
+    $lowStockProducts = Product::where('stock', '<=', 51)->get();
+
+    // Gráfico de ventas por día (último mes)
+    $salesByDay = Order::selectRaw('DATE(created_at) as date, SUM(total_amount) as total')
+        ->groupBy('date')
+        ->whereDate('created_at', '>=', Carbon::now()->subMonth()) // Datos del último mes
+        ->orderBy('date')
+        ->get();
+
+    // Pasar los datos a la vista
+    return view('dashboard', compact('todaySales', 'weeklySales', 'monthlySales', 'lowStockProducts', 'salesByDay'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -59,6 +78,29 @@ Route::get('/orders', [OrderController::class, 'index'])->name('orders');
 
 // Ruta para mostrar el detalle de un pedido específico
 Route::get('/orders/{orderId}', [OrderController::class, 'show'])->name('orders.show');
+
+
+
+use App\Http\Controllers\Admin\OrderManagementController;
+
+
+Route::prefix('admin/orders')->group(function () {
+    Route::get('/', [OrderManagementController::class, 'index'])->name('admin.orders.index');  // Lista de pedidos
+    Route::get('/{id}', [OrderManagementController::class, 'show'])->name('admin.orders.show');  // Detalles de pedido
+    Route::post('/{id}/status', [OrderManagementController::class, 'updateStatus'])->name('admin.orders.updateStatus');  // Cambiar estado
+});
+
+
+use App\Http\Controllers\Admin\ProductManagementController;
+
+Route::prefix('admin')
+    ->name('admin.')
+    ->group(function () {
+        Route::resource('products', ProductManagementController::class);
+        Route::post('products/{product}/update-stock', [ProductManagementController::class, 'updateStock'])
+            ->name('products.updateStock');
+    });
+
 
 
 use Livewire\Livewire;
