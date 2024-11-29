@@ -1,4 +1,6 @@
 <x-app-layout>
+
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Dashboard') }}
@@ -9,67 +11,107 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <!-- Resumen de Ventas -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <!-- Venta Hoy -->
-                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6 flex items-center justify-between border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition duration-200">
-                            <div>
-                                <h5 class="text-3xl font-bold text-gray-900 dark:text-white">{{ number_format($todaySales, 2) }}</h5>
-                                <p class="text-gray-500 dark:text-gray-400">Ventas hoy</p>
+
+                    {{-- Mostrar gráficos y estadísticas para Admin (role_id 1) o Personal (role_id 4) --}}
+                    @if ($userRoleId == 1 || $userRoleId == 4)
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <!-- Resumen de Ventas -->
+                            <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6 flex items-center justify-between border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition duration-200">
+                                <div>
+                                    <h5 class="text-3xl font-bold text-gray-900 dark:text-white">{{ number_format($todaySales, 2) }}</h5>
+                                    <p class="text-gray-500 dark:text-gray-400">Ventas hoy</p>
+                                </div>
+                                <div class="text-4xl text-blue-500 dark:text-blue-400">
+                                    <i class="fas fa-calendar-day"></i>
+                                </div>
                             </div>
-                            <div class="text-4xl text-blue-500 dark:text-blue-400">
-                                <i class="fas fa-calendar-day"></i>
+
+                            <!-- Venta Esta Semana -->
+                            <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6 flex items-center justify-between border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition duration-200">
+                                <div>
+                                    <h5 class="text-3xl font-bold text-gray-900 dark:text-white">{{ number_format($weeklySales, 2) }}</h5>
+                                    <p class="text-gray-500 dark:text-gray-400">Ventas esta semana</p>
+                                </div>
+                                <div class="text-4xl text-green-500 dark:text-green-400">
+                                    <i class="fas fa-calendar-week"></i>
+                                </div>
+                            </div>
+
+                            <!-- Venta Este Mes -->
+                            <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6 flex items-center justify-between border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition duration-200">
+                                <div>
+                                    <h5 class="text-3xl font-bold text-gray-900 dark:text-white">{{ number_format($monthlySales, 2) }}</h5>
+                                    <p class="text-gray-500 dark:text-gray-400">Ventas este mes</p>
+                                </div>
+                                <div class="text-4xl text-yellow-500 dark:text-yellow-400">
+                                    <i class="fas fa-calendar-month"></i>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Venta Esta Semana -->
-                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6 flex items-center justify-between border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition duration-200">
-                            <div>
-                                <h5 class="text-3xl font-bold text-gray-900 dark:text-white">{{ number_format($weeklySales, 2) }}</h5>
-                                <p class="text-gray-500 dark:text-gray-400">Ventas esta semana</p>
+                        <!-- Productos con Bajo Stock -->
+                        <div class="mt-8">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100">Productos con Bajo Stock</h3>
+                            <ul class="mt-4 text-gray-700 dark:text-gray-300 space-y-2">
+                                @foreach($lowStockProducts as $product)
+                                    <li class="flex justify-between items-center border-b border-gray-200 dark:border-gray-700 pb-2">
+                                        <span>{{ $product->name }} ({{ $product->stock }} en stock)</span>
+                                        <span class="text-red-500 font-semibold">{{ $product->stock }} en stock</span>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+
+                        <!-- Gráfico de Ventas por Día -->
+                        <div class="mt-8">
+                            <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+                                <div class="flex justify-between items-center mb-4">
+                                    <h5 class="text-3xl font-semibold text-gray-900 dark:text-white">Ventas por Día</h5>
+                                    <p class="text-gray-500 dark:text-gray-400">Último mes</p>
+                                </div>
+                                <div id="area-chart"></div>
                             </div>
-                            <div class="text-4xl text-green-500 dark:text-green-400">
-                                <i class="fas fa-calendar-week"></i>
+                        </div>
+                    @endif
+
+                    {{-- Mostrar tarjetas para Consultor (role_id 2) o Cliente (role_id 3) --}}
+                    @if ($userRoleId == 2 || $userRoleId == 3)
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <!-- Total de Pedidos del Usuario -->
+                            <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6 flex items-center justify-between border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition duration-200">
+                                <div>
+                                    <h5 class="text-3xl font-bold text-gray-900 dark:text-white">{{ $totalOrders }}</h5>
+                                    <p class="text-gray-500 dark:text-gray-400">Total de Pedidos</p>
+                                </div>
+                                <div class="text-4xl text-blue-500 dark:text-blue-400">
+                                    <i class="fas fa-boxes"></i>
+                                </div>
+                            </div>
+
+                            <!-- Detalle del Último Pedido -->
+                            <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6 flex items-center justify-between border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition duration-200">
+                                <div>
+                                    <h5 class="text-3xl font-bold text-gray-900 dark:text-white">{{ $lastOrder->id ?? 'No hay pedidos' }}</h5>
+                                    <p class="text-gray-500 dark:text-gray-400">Último Pedido</p>
+                                </div>
+                                <div class="text-4xl text-green-500 dark:text-green-400">
+                                    <i class="fas fa-truck"></i>
+                                </div>
+                            </div>
+
+                            <!-- Resumen de los Datos del Usuario -->
+                            <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6 flex items-center justify-between border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition duration-200">
+                                <div>
+                                    <h5 class="text-3xl font-bold text-gray-900 dark:text-white">{{ $user->name }}</h5>
+                                    <p class="text-gray-500 dark:text-gray-400">Datos de Usuario</p>
+                                </div>
+                                <div class="text-4xl text-yellow-500 dark:text-yellow-400">
+                                    <i class="fas fa-user"></i>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Venta Este Mes -->
-                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6 flex items-center justify-between border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition duration-200">
-                            <div>
-                                <h5 class="text-3xl font-bold text-gray-900 dark:text-white">{{ number_format($monthlySales, 2) }}</h5>
-                                <p class="text-gray-500 dark:text-gray-400">Ventas este mes</p>
-                            </div>
-                            <div class="text-4xl text-yellow-500 dark:text-yellow-400">
-                                <i class="fas fa-calendar-month"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Productos con Bajo Stock -->
-                    <div class="mt-8">
-                        <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100">Productos con Bajo Stock</h3>
-                        <ul class="mt-4 text-gray-700 dark:text-gray-300 space-y-2">
-                            @foreach($lowStockProducts as $product)
-                                <li class="flex justify-between items-center border-b border-gray-200 dark:border-gray-700 pb-2">
-                                    <span>{{ $product->name }} ({{ $product->stock }} en stock)</span>
-                                    <span class="text-red-500 font-semibold">{{ $product->stock }} en stock</span>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-
-                    <!-- Gráfico de Ventas por Día -->
-                    <div class="mt-8">
-                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-                            <div class="flex justify-between items-center mb-4">
-                                <h5 class="text-3xl font-semibold text-gray-900 dark:text-white">Ventas por Día</h5>
-                                <p class="text-gray-500 dark:text-gray-400">Último mes</p>
-                            </div>
-                            <!-- Contenedor del gráfico -->
-                            <div id="area-chart"></div>
-                        </div>
-                    </div>
-
+                    @endif
                 </div>
             </div>
         </div>
