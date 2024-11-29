@@ -65,6 +65,12 @@ Route::middleware('auth')->group(function () {
 
     // Ruta para procesar el pago
     Route::post('/checkout', [CheckoutController::class, 'process'])->name('checkout.process');
+
+    // Ruta para el callback de pago exitoso desde Libélula, incluyendo el orderId en la query
+    Route::get('/api/pago-exitoso', [CheckoutController::class, 'paymentSuccess'])->name('payment.success');
+
+    // Ruta para mostrar los errores
+    Route::get('/checkout/error', [CheckoutController::class, 'showError'])->name('checkout.error');
 });
 
 
