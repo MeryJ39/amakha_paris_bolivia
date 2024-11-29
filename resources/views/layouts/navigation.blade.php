@@ -21,7 +21,7 @@
         @endphp
 
         <!-- Dashboard -->
-        @if ($userRoleId == 1 || $userRoleId == 2)  <!-- Admin o Superadmin -->
+        @if ($userRoleId == 1)  <!-- Admin o Superadmin -->
             <li>
                 <a href="{{ route('dashboard') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <i class="fas fa-tachometer-alt w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
@@ -31,7 +31,7 @@
         @endif
 
         <!-- Gestión de Pedidos -->
-        @if ($userRoleId == 1 || $userRoleId == 2 || $userRoleId == 3)  <!-- Admin, Superadmin o Manager -->
+        @if ($userRoleId == 1 || $userRoleId == 4)  <!-- Admin, Superadmin o Manager -->
             <li>
                 <a href="{{ route('admin.orders.index') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <i class="fas fa-boxes w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
@@ -41,7 +41,7 @@
         @endif
 
         <!-- Gestión de Categorías -->
-        @if ($userRoleId == 1 || $userRoleId == 2)  <!-- Admin o Superadmin -->
+        @if ($userRoleId == 1)  <!-- Admin o Superadmin -->
             <li>
                 <a href="{{ route('admin.categories.index') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <i class="fas fa-th-large w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
@@ -51,7 +51,7 @@
         @endif
 
         <!-- Gestión de Subcategorías -->
-        @if ($userRoleId == 1 || $userRoleId == 2)  <!-- Admin o Superadmin -->
+        @if ($userRoleId == 1)  <!-- Admin o Superadmin -->
             <li>
                 <a href="{{ route('admin.subcategories.index') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <i class="fas fa-th-list w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
@@ -61,7 +61,7 @@
         @endif
 
         <!-- Gestión de Productos -->
-        @if ($userRoleId == 1 || $userRoleId == 2 || $userRoleId == 3)  <!-- Admin, Superadmin o Manager -->
+        @if ($userRoleId == 1 || $userRoleId == 4)  <!-- Admin, Superadmin o Manager -->
             <li>
                 <a href="{{ route('admin.products.index') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <i class="fas fa-cogs w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
@@ -71,7 +71,7 @@
         @endif
 
         <!-- Gestión de Usuarios -->
-        @if ($userRoleId == 1 || $userRoleId == 2)  <!-- Admin o Superadmin -->
+        @if ($userRoleId == 1)  <!-- Admin o Superadmin -->
             <li>
                 <a href="{{ route('admin.users.index') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <i class="fas fa-users w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
@@ -81,7 +81,7 @@
         @endif
 
         <!-- Gestión de Roles -->
-        @if ($userRoleId == 2)  <!-- Solo para Superadmin -->
+        @if ($userRoleId == 1)  <!-- Solo para Superadmin -->
             <li>
                 <a href="{{ route('admin.roles.index', 1) }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <i class="fas fa-user-shield w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
@@ -91,7 +91,7 @@
         @endif
 
         <!-- Gestión de Descuentos -->
-        @if ($userRoleId == 1 || $userRoleId == 2)  <!-- Admin o Superadmin -->
+        @if ($userRoleId == 1 || $userRoleId == 4)  <!-- Admin o Superadmin -->
             <li>
                 <a href="{{ route('admin.discounts.index') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <i class="fas fa-tag w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
@@ -109,20 +109,24 @@
         </li>
 
         <!-- Mis Pedidos -->
+        @if ($userRoleId == 2 || $userRoleId == 3)
         <li>
             <a href="{{ route('orders') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                 <i class="fas fa-box w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                 <span class="ms-3">Mis Pedidos</span>
             </a>
         </li>
+        @endif
 
         <!-- Gestión de Direcciones -->
+        @if ($userRoleId == 2 || $userRoleId == 3)
         <li>
             <a href="{{ route('addresses.index') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                 <i class="fas fa-map-marker-alt w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                 <span class="ms-3">Mis Direcciones</span>
             </a>
         </li>
+        @endif
 
             <!-- Volver a la tienda -->
             <li>
