@@ -73,7 +73,11 @@
 
                         <div class="mb-6">
                             <label for="qr_code" class="block text-sm font-medium text-gray-700">Escanear QR para pagar</label>
+                        </div>
 
+                        <!-- Aviso sobre el costo de envío -->
+                        <div class="bg-yellow-100 text-yellow-800 p-4 rounded-md mb-6">
+                            <p class="text-center font-semibold">El costo de envío es de 20 Bs.</p>
                         </div>
 
                         <!-- Botón de confirmación -->

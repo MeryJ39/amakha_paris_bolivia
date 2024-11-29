@@ -16,129 +16,133 @@
 
        <!-- Menú de navegación -->
        <ul class="space-y-2 font-medium">
-          <!-- Dashboard -->
-          <li>
-             <a href="{{ route('dashboard') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
-                   <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
-                   <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
-                </svg>
-                <span class="ms-3">Dashboard</span>
-             </a>
-          </li>
+        @php
+            $userRoleId = auth()->user()->role_id; // Suponiendo que el campo 'role_id' está en la tabla 'users'
+        @endphp
 
-          <!-- Gestión de Pedidos (Nuevo Botón) -->
+        <!-- Dashboard -->
+        @if ($userRoleId == 1 || $userRoleId == 2)  <!-- Admin o Superadmin -->
+            <li>
+                <a href="{{ route('dashboard') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <i class="fas fa-tachometer-alt w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                    <span class="ms-3">Dashboard</span>
+                </a>
+            </li>
+        @endif
+
+        <!-- Gestión de Pedidos -->
+        @if ($userRoleId == 1 || $userRoleId == 2 || $userRoleId == 3)  <!-- Admin, Superadmin o Manager -->
             <li>
                 <a href="{{ route('admin.orders.index') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M20 2H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm-1 2v12H5V4h14z"/>
-                    </svg>
+                    <i class="fas fa-boxes w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                     <span class="ms-3">Gestión de Pedidos</span>
                 </a>
             </li>
+        @endif
 
-            <!-- Gestión de Categorías -->
+        <!-- Gestión de Categorías -->
+        @if ($userRoleId == 1 || $userRoleId == 2)  <!-- Admin o Superadmin -->
             <li>
                 <a href="{{ route('admin.categories.index') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M4 4h16v16H4z"/>
-                    </svg>
+                    <i class="fas fa-th-large w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                     <span class="ms-3">Gestión de Categorías</span>
                 </a>
             </li>
+        @endif
 
-            <!-- Gestión de Subcategorías -->
+        <!-- Gestión de Subcategorías -->
+        @if ($userRoleId == 1 || $userRoleId == 2)  <!-- Admin o Superadmin -->
             <li>
                 <a href="{{ route('admin.subcategories.index') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M4 4h16v16H4z"/>
-                    </svg>
+                    <i class="fas fa-th-list w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                     <span class="ms-3">Gestión de Subcategorías</span>
                 </a>
             </li>
+        @endif
 
-            <!-- Gestión de Productos (Nuevo Botón) -->
+        <!-- Gestión de Productos -->
+        @if ($userRoleId == 1 || $userRoleId == 2 || $userRoleId == 3)  <!-- Admin, Superadmin o Manager -->
             <li>
                 <a href="{{ route('admin.products.index') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14h-2v-2h2v2zm0-4h-2V7h2v5z"/>
-                    </svg>
+                    <i class="fas fa-cogs w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                     <span class="ms-3">Gestión de Productos</span>
                 </a>
             </li>
+        @endif
 
-            <!-- Gestión de Usuarios -->
+        <!-- Gestión de Usuarios -->
+        @if ($userRoleId == 1 || $userRoleId == 2)  <!-- Admin o Superadmin -->
             <li>
                 <a href="{{ route('admin.users.index') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 12c2.209 0 4-1.791 4-4s-1.791-4-4-4-4 1.791-4 4 1.791 4 4 4zm0 2c-2.667 0-8 1.334-8 4v2h16v-2c0-2.666-5.333-4-8-4z"/>
-                    </svg>
+                    <i class="fas fa-users w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                     <span class="ms-3">Gestión de Usuarios</span>
                 </a>
             </li>
+        @endif
 
-            <!-- Gestión de Roles -->
+        <!-- Gestión de Roles -->
+        @if ($userRoleId == 2)  <!-- Solo para Superadmin -->
             <li>
                 <a href="{{ route('admin.roles.index', 1) }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 12c2.209 0 4-1.791 4-4s-1.791-4-4-4-4 1.791-4 4 1.791 4 4 4zm0 2c-2.667 0-8 1.334-8 4v2h16v-2c0-2.666-5.333-4-8-4z"/>
-                    </svg>
+                    <i class="fas fa-user-shield w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                     <span class="ms-3">Gestión de Roles</span>
                 </a>
             </li>
+        @endif
 
-            <!-- Gestión de Descuentos (Nuevo Botón) -->
+        <!-- Gestión de Descuentos -->
+        @if ($userRoleId == 1 || $userRoleId == 2)  <!-- Admin o Superadmin -->
             <li>
                 <a href="{{ route('admin.discounts.index') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M18 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm-1 2v12H7V4h10z"/>
-                    </svg>
+                    <i class="fas fa-tag w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                     <span class="ms-3">Gestión de Descuentos</span>
                 </a>
             </li>
+        @endif
 
-          <!-- Perfil -->
-          <li>
-             <a href="{{ route('profile.edit') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                   <path d="M10 2a5 5 0 1 0 0 10A5 5 0 0 0 10 2ZM3 18a7 7 0 1 1 14 0H3Z"/>
-                </svg>
+        <!-- Perfil -->
+        <li>
+            <a href="{{ route('profile.edit') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <i class="fas fa-user-circle w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                 <span class="ms-3">Perfil</span>
-             </a>
-          </li>
+            </a>
+        </li>
 
-          <!-- Mis Pedidos -->
-          <li>
-             <a href="{{ route('orders') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                   <path d="M10 2a1 1 0 0 0-1 1v6.828l-2.293-2.293a1 1 0 0 0-1.414 1.414L10 13.414V20a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-6.828l2.293 2.293a1 1 0 0 0 1.414-1.414L14 10.586V4a1 1 0 0 0-1-1h-3Z"/>
-                </svg>
+        <!-- Mis Pedidos -->
+        <li>
+            <a href="{{ route('orders') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <i class="fas fa-box w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                 <span class="ms-3">Mis Pedidos</span>
-             </a>
-          </li>
+            </a>
+        </li>
 
-          <!-- Volver a la tienda -->
-          <li>
-             <a href="/" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                   <path d="M10 2a1 1 0 0 0-1 1v6.828l-2.293-2.293a1 1 0 0 0-1.414 1.414L10 13.414V20a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-6.828l2.293 2.293a1 1 0 0 0 1.414-1.414L14 10.586V4a1 1 0 0 0-1-1h-3Z"/>
-                </svg>
+        <!-- Gestión de Direcciones -->
+        <li>
+            <a href="{{ route('addresses.index') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <i class="fas fa-map-marker-alt w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                <span class="ms-3">Mis Direcciones</span>
+            </a>
+        </li>
+
+            <!-- Volver a la tienda -->
+            <li>
+                <a href="/" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <i class="fas fa-home w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                 <span class="ms-3">Volver a la tienda</span>
-             </a>
-          </li>
+                </a>
+            </li>
 
-          <!-- Autenticación (Logout) -->
-          <li>
-             <form method="POST" action="{{ route('logout') }}">
+            <!-- Autenticación (Logout) -->
+            <li>
+                <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <button type="submit" class="flex items-center w-full p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                   <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M5 3a1 1 0 0 1 1 1v3h8V4a1 1 0 0 1 2 0v3h2V4a3 3 0 0 0-3-3H5a3 3 0 0 0-3 3v3h2V4a1 1 0 0 1 1-1Z"/>
-                   </svg>
-                   <span class="ms-3">Cerrar sesión</span>
+                    <i class="fas fa-sign-out-alt w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                    <span class="ms-3">Cerrar sesión</span>
                 </button>
-             </form>
-          </li>
+                </form>
+            </li>
+
        </ul>
     </div>
  </aside>

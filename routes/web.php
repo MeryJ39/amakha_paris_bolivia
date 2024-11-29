@@ -148,6 +148,48 @@ Route::prefix('admin')->name('admin.')->group(function () {
 });
 
 
+use App\Models\Subcategory;
+
+Route::get('/productos/subcategoria/{subcategoryId}', function ($subcategoryId) {
+    // Obtener la subcategoría
+    $subcategory = Subcategory::findOrFail($subcategoryId);
+
+    // Obtener los productos filtrados por la subcategoría
+    $products = Product::where('subcategory_id', $subcategory->id)->get();
+
+    // Retornar la vista con los productos filtrados
+    return view('shop.bySubcategory', compact('products', 'subcategory'));
+})->name('shop.products.bySubcategory');
+
+
+// Ruta para la página "Sobre Nosotros"
+Route::get('/sobre-nosotros', function () {
+    return view('shop.about');
+})->name('about');
+
+
+
+use App\Http\Controllers\AddressController;
+
+// Ruta para ver todas las direcciones del usuario
+Route::get('/mis-direcciones', [AddressController::class, 'index'])->name('addresses.index');
+
+// Ruta para agregar una nueva dirección
+Route::get('/mis-direcciones/crear', [AddressController::class, 'create'])->name('addresses.create');
+
+// Ruta para guardar una nueva dirección
+Route::post('/mis-direcciones', [AddressController::class, 'store'])->name('addresses.store');
+
+// Ruta para editar una dirección
+Route::get('/mis-direcciones/{address}/editar', [AddressController::class, 'edit'])->name('addresses.edit');
+
+// Ruta para actualizar una dirección
+Route::put('/mis-direcciones/{address}', [AddressController::class, 'update'])->name('addresses.update');
+
+// Ruta para eliminar una dirección
+Route::delete('/mis-direcciones/{address}', [AddressController::class, 'destroy'])->name('addresses.destroy');
+
+
 
 use Livewire\Livewire;
 

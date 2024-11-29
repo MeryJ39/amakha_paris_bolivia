@@ -19,7 +19,7 @@ class ProductSeeder extends Seeder
             'price' => 100.00, // Precio en BS
             'stock' => 20, // Cantidad en inventario
             'image' => 'https://res.cloudinary.com/dqyo3iajp/image/upload/v1731713014/156996-1200-auto_xrggqq.png',
-            'subcategory_id' => 1, // Relación con subcategoría 'Hombres' de 'Perfumes'
+            'subcategory_id' => 2, // Relación con subcategoría 'Hombres' de 'Perfumes'
         ]);
 
         Product::create([
@@ -28,7 +28,7 @@ class ProductSeeder extends Seeder
             'price' => 100.00, // Precio en BS
             'stock' => 30, // Cantidad en inventario
             'image' => 'https://res.cloudinary.com/dqyo3iajp/image/upload/v1731713190/158694-1200-auto_x3cmli.webp',
-            'subcategory_id' => 1, // Relación con subcategoría 'Hombres' de 'Perfumes'
+            'subcategory_id' => 2, // Relación con subcategoría 'Hombres' de 'Perfumes'
         ]);
 
         Product::create([
@@ -37,7 +37,7 @@ class ProductSeeder extends Seeder
             'price' => 100.00, // Precio en BS
             'stock' => 10, // Cantidad en inventario
             'image' => 'https://res.cloudinary.com/dqyo3iajp/image/upload/v1731713338/157688-800-auto_xogfkv.webp',
-            'subcategory_id' => 2, // Relación con subcategoría 'Femeninos' de 'Perfumes'
+            'subcategory_id' => 1, // Relación con subcategoría 'Femeninos' de 'Perfumes'
         ]);
 
         Product::create([
@@ -46,7 +46,7 @@ class ProductSeeder extends Seeder
             'price' => 100.00, // Precio en BS
             'stock' => 40, // Cantidad en inventario
             'image' => 'https://res.cloudinary.com/dqyo3iajp/image/upload/v1731713448/159626-800-auto_jth5cw.webp',
-            'subcategory_id' => 2, // Relación con subcategoría 'Femeninos' de 'Perfumes'
+            'subcategory_id' => 1, // Relación con subcategoría 'Femeninos' de 'Perfumes'
         ]);
 
         Product::create([
@@ -64,7 +64,7 @@ class ProductSeeder extends Seeder
             'price' => 180.50, // Precio en BS
             'stock' => 60, // Cantidad en inventario
             'image' => 'https://res.cloudinary.com/dqyo3iajp/image/upload/v1731713689/159384-800-auto_mc4ipa.png',
-            'subcategory_id' => 5, // Relación con subcategoría 'Acondicionadores' de 'Cuidado Capilar'
+            'subcategory_id' => 6, // Relación con subcategoría 'Acondicionadores' de 'Cuidado Capilar'
         ]);
     }
 }

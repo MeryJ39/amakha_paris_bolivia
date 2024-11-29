@@ -60,7 +60,7 @@
                             <!-- Subcategorías -->
                             @foreach($category->subcategories as $subcategory)
                                 <li>
-                                    <a href="#" class="block px-4 py-2 hover:bg-yellow-100">{{ $subcategory->name }}</a>
+                                    <a href="{{ route('shop.products.bySubcategory', ['subcategoryId' => $subcategory->id]) }}" class="block px-4 py-2 hover:bg-yellow-100">{{ $subcategory->name }}</a>
                                 </li>
                             @endforeach
 
@@ -77,7 +77,7 @@
 
 
     <li class="w-max">
-        <a href="#" class="block py-2 px-3 hover:text-primary">Sobre nosotros</a>
+        <a href="{{ route('about') }}" class="block py-2 px-3 hover:text-primary">Sobre nosotros</a>
     </li>
 
 

@@ -91,6 +91,7 @@ class CheckoutController extends Controller
             'descripcion' => 'Pago Compra Online',  // Descripción del pago
             'nombre_cliente' => Auth::user()->name, // Nombre del cliente
             'apellido_cliente' => Auth::user()->last_name, // Apellido del cliente
+            'valor_envio'=> 2,
             'fecha_vencimiento' => now()->addDays(1)->toDateString(), // Fecha de vencimiento para el pago
             'lineas_detalle_deuda' => $cartItems->map(function ($cartItem) {
                 return [

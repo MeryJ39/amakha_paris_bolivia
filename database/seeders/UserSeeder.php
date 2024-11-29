@@ -16,10 +16,11 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        // Obtener el ID del rol 'admin', 'consultor' y 'cliente'
+        // Obtener el ID del rol 'admin', 'consultor', 'cliente' y 'personal'
         $adminRole = Role::where('name', 'Admin')->first();
         $consultorRole = Role::where('name', 'Consultor')->first();
         $clienteRole = Role::where('name', 'Cliente')->first();
+        $personalRole = Role::where('name', 'Personal')->first();  // Nuevo rol para 'Personal'
 
         // Crear un usuario con rol 'admin'
         User::create([
@@ -49,6 +50,16 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password123'),
             'phone' => '555-9876',  // Nuevo campo teléfono
             'role_id' => $clienteRole->id, // Asignar el rol 'cliente'
+        ]);
+
+        // Crear un usuario con rol 'personal' (Atención al cliente)
+        User::create([
+            'name' => 'Laura',
+            'last_name' => 'Martínez',  // Nuevo campo apellido
+            'email' => 'laura@example.com',
+            'password' => Hash::make('password123'),
+            'phone' => '555-4321',  // Nuevo campo teléfono
+            'role_id' => $personalRole->id, // Asignar el rol 'personal'
         ]);
     }
 }
