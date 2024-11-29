@@ -27,9 +27,6 @@
                                         {{ __("Método de Pago") }}
                                     </th>
                                     <th class="px-6 py-3 text-sm font-medium text-gray-900 dark:text-gray-100 border-b border-gray-300 dark:border-gray-700">
-                                        {{ __("Estado de Pago") }}
-                                    </th>
-                                    <th class="px-6 py-3 text-sm font-medium text-gray-900 dark:text-gray-100 border-b border-gray-300 dark:border-gray-700">
                                         {{ __("Estado del Pedido") }}
                                     </th>
                                     <th class="px-6 py-3 text-sm font-medium text-gray-900 dark:text-gray-100 border-b border-gray-300 dark:border-gray-700">
@@ -44,16 +41,13 @@
                                 @foreach ($orders as $order)
                                     <tr>
                                         <td class="px-6 py-4 text-sm text-gray-900 dark:text-gray-100 border-b border-gray-300 dark:border-gray-700">
-                                            {{ $order->order_number }}
+                                            {{ $order->id }}
                                         </td>
                                         <td class="px-6 py-4 text-sm text-gray-900 dark:text-gray-100 border-b border-gray-300 dark:border-gray-700">
                                             {{ $order->created_at->format('d-m-Y') }}
                                         </td>
                                         <td class="px-6 py-4 text-sm text-gray-900 dark:text-gray-100 border-b border-gray-300 dark:border-gray-700">
                                             {{ ucfirst($order->payment_method) }}
-                                        </td>
-                                        <td class="px-6 py-4 text-sm text-gray-900 dark:text-gray-100 border-b border-gray-300 dark:border-gray-700">
-                                            {{ ucfirst($order->payment_status) }}
                                         </td>
                                         <td class="px-6 py-4 text-sm text-gray-900 dark:text-gray-100 border-b border-gray-300 dark:border-gray-700">
                                             {{ ucfirst($order->status) }}
