@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Models\Order;
 use App\Models\Product;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -16,6 +17,18 @@ Route::get('/shop', function () {
 });
 
 Route::get('/dashboard', function () {
+    $user = Auth::user(); // Obtener al usuario autenticado
+    $userRoleId = $user->role_id; // Obtener el 'role_id' del usuario autenticado
+
+    // Obtener los pedidos del usuario autenticado
+    $orders = Order::where('user_id', Auth::id())->get();
+
+    // Contar el total de pedidos del usuario
+    $totalOrders = $orders->count();
+
+    // Obtener el último pedido (si existe)
+    $lastOrder = $orders->last();
+
     // Resumen de ventas (total por día, semana, mes)
     $todaySales = Order::whereDate('created_at', Carbon::today())->sum('total_amount');
     $weeklySales = Order::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->sum('total_amount');
@@ -32,7 +45,10 @@ Route::get('/dashboard', function () {
         ->get();
 
     // Pasar los datos a la vista
-    return view('dashboard', compact('todaySales', 'weeklySales', 'monthlySales', 'lowStockProducts', 'salesByDay'));
+    return view('dashboard', compact(
+        'userRoleId', 'totalOrders', 'lastOrder', 'todaySales', 'weeklySales',
+        'monthlySales', 'lowStockProducts', 'salesByDay', 'user'
+    ));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
