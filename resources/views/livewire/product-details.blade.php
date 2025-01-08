@@ -24,8 +24,14 @@
                 <p class="text-3xl font-bold text-red-600">Bs {{ number_format($finalPrice, 2) }}</p>
             @else
                 <!-- Precio normal si no hay descuento -->
-                <p class="text-3xl font-bold text-gray-900 text-center md:text-right">Bs {{ number_format($product->price, 2) }}</p>
-            @endif
+                @auth
+                    @if (auth()->user()->role_id == 2)
+                        <p class="text-3xl font-bold text-gray-900 text-center md:text-right">Bs {{ number_format($consultorPrice, 2) }}</p>
+                    @else
+                        <p class="text-3xl font-bold text-gray-900 text-center md:text-right">Bss {{ number_format($product->price, 2) }}</p>
+                    @endif
+                @endauth
+             @endif
 
             <!-- Controles de cantidad -->
             <div class="mt-4 flex items-center space-x-3 justify-center md:justify-end">

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('image')->nullable(); // Imagen del producto (ruta de la imagen)
             $table->foreignId('subcategory_id')->constrained('subcategories')->onDelete('cascade'); // Relación con la subcategoría
             $table->string('slug')->unique(); // Slug para la URL (nuevo campo)
+            $table->decimal('discount', 5, 2)->nullable()->default(0); // Nuevo campo de descuento
             $table->timestamps(); // Fechas de creación y actualización
         });
     }

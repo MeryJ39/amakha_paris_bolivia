@@ -30,7 +30,11 @@
                             // Aplicamos los descuentos si existen
                             $discountData = $this->applyDiscounts($product);
                             $discountAmount = $discountData['discount_amount'];
-                            $finalPrice = $discountAmount > 0 ? $product->price - $discountAmount : $product->price;
+                            $consultorPrice = $discountData['consultor_price'];
+                            $finalPrice = $discountAmount > 0 ? $product->price - $discountAmount : $consultorPrice;
+
+
+
                         @endphp
 
                         <!-- Mostrar Precio Original solo si hay descuento -->
@@ -51,10 +55,11 @@
                                 Ahora: Bs {{ number_format($finalPrice, 2) }}
                             </span>
                         @else
-                            <!-- Si no hay descuento, solo mostramos el precio final -->
+
                             <span class="text-2xl font-custom font-extrabold text-gray-900 dark:text-white">
                                 Bs {{ number_format($finalPrice, 2) }}
                             </span>
+
                         @endif
                     </div>
 
