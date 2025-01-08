@@ -42,50 +42,40 @@ class ProductList extends Component
     // Aplicar descuento a los productos según el rol del usuario
     public function applyDiscounts($product)
     {
-        $user = Auth::user();
-        $discount = null;
-        $discountAmount = 0; // Inicializamos el descuento a 0
+        $discountAmount = 0;  // Inicializamos el descuento a 0
+        $consultor_price = $product->price;  // Aseguramos que siempre haya un precio de consultor (por defecto es el precio original)
+
+        $user = Auth::user();  // Verificamos si el usuario está autenticado
 
         if ($user) {
-            // Obtener el descuento correspondiente para el rol del usuario y el producto
-            $discount = Discount::where('role_id', $user->role_id)
-                ->where('product_id', $product->id)
-                ->where('is_active', true)
-                ->where('start_date', '<=', now())
-                ->where('end_date', '>=', now())
-                ->first();
-
-
-            // Log para verificar la consulta de descuento
-            Log::info('Discount query:', [
-                'role_id' => $user->role_id,
-                'product_id' => $product->id,
-                'start_date' => now(),
-                'end_date' => now(),
-                'discount_found' => $discount ? true : false,  // Log si se encontró un descuento
-            ]);
-        }
-
-        // Si hay un descuento, calcular el monto del descuento
-        if ($discount) {
-            $discountAmount = $discount->discount_amount;
-        }
+            // Si el rol del usuario es 2 (por ejemplo, un rol especial), se aplica un descuento especial
+            if ($user->role_id == 2) {
+                $discountAmount = 0;  // Descuento de 0
+                $consultor_price = $product->price / 2;  // El precio se reduce a la mitad
+            } else {
+                // Si el rol del usuario es diferente, se aplica el descuento del producto (si existe)
+                $discountAmount = $product->discount ?? 0;  // Descuento del producto (si existe)
+             }
+        } else {
+            // Si no hay usuario autenticado, simplemente verificamos si el producto tiene descuento
+            $discountAmount = $product->discount ?? 0;  // Descuento del producto (si existe)
+         }
 
         // Registrar en los logs el descuento y el precio actual
         Log::info('Discount applied:', [
             'product_id' => $product->id,
             'original_price' => $product->price,
             'discount_amount' => $discountAmount,
-            'final_price' => $product->price - $discountAmount,
-        ]);
-
+         ]);
 
         // Devolver el precio original y la cantidad del descuento
         return [
             'original_price' => $product->price,  // Precio original
             'discount_amount' => $discountAmount, // Monto del descuento
-        ];
+            'consultor_price' => $consultor_price,  // Precio para consultores
+         ];
     }
+
 
     // Escuchar el evento 'cartUpdated' cuando se despacha
     #[On('cartUpdated')]
@@ -127,7 +117,10 @@ class ProductList extends Component
             'user_id' => $user->id,
             'product_id' => $productId,
             'quantity' => 1,  // Establecer cantidad inicial
-            'price' => $discountData['original_price'],  // Precio original del producto
+
+            'price' => $discountData['consultor_price']<$discountData['original_price'] ? $discountData['consultor_price']: $discountData['original_price'],  // Precio con descuento para consultores
+
+
             'unit_discount' => $discountData['discount_amount'],  // Monto del descuento
         ]);
 
