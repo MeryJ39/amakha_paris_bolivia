@@ -83,7 +83,7 @@ class CheckoutController extends Controller
 
         // Datos para la petición a Libélula
         $paymentData = [
-            'appkey' => '11bb10ce-68ba-4af1-8eb7-4e6624fed729', // Reemplaza con tu appkey de Libélula
+            'appkey' => env('LIBELULA_API_KEY', '11bb10ce-68ba-4af1-8eb7-4e6624fed729'), // Reemplaza con tu appkey de Libélula
             'email_cliente' => Auth::user()->email,  // El email del cliente
             'identificador' => $uniqueIdentifier,  // Identificador único generado
             'callback_url' => url("/api/pago-exitoso?id={$order->id}"), // Notificación interna de pago completado
