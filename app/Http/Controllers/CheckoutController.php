@@ -76,6 +76,14 @@ class CheckoutController extends Controller
                 'unit_discount' => $cartItem->unit_discount,  // El descuento unitario aplicado en ese momento
                 'total_at_purchase' => ($cartItem->price - $cartItem->unit_discount) * $cartItem->quantity,  // Total por esa cantidad de producto con el descuento
             ]);
+            // **Aquí es donde se actualiza el stock del producto**
+            $product = $cartItem->product;  // Obtener el producto desde el CartItem
+            $newStock = $product->stock - $cartItem->quantity;  // Restar la cantidad comprada al stock disponible
+
+            // Actualizar el stock del producto en la base de datos
+            $product->update([
+                'stock' => $newStock,
+            ]);
         }
 
         // Limpiar el carrito después de completar la compra
