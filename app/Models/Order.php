@@ -40,4 +40,11 @@ class Order extends Model
     {
         return $this->hasMany(OrderItem::class);
     }
+
+    // app/Models/Order.php
+
+    public function chat()
+    {
+        return $this->hasOne(Chat::class); // Un pedido tiene un chat
+    }
 }

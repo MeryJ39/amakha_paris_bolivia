@@ -45,4 +45,18 @@ class OrderController extends Controller
 
         return view('shop.confirmation', compact('order', 'orderItems'));
     }
+
+    // En OrderController.php
+
+    public function startChat(Order $order)
+    {
+          // Verificar si el usuario puede ver este pedido
+
+        // Redirigir al usuario al chat o a la página para crear el chat si no existe
+        if ($order->chat) {
+            return redirect()->route('chat.show', $order->chat);
+        } else {
+            return redirect()->route('chat.create', $order); // Ruta para crear el chat (ej: orders/{order}/chat/create)
+        }
+    }
 }

@@ -47,6 +47,12 @@ class User extends Authenticatable
         ];
     }
 
+    // Nueva función para verificar si el usuario es administrador
+    public function isAdmin()
+    {
+        return $this->role && $this->role->name === 'Admin';
+    }
+
     /**
      * Define the relationship between User and Role
      */
@@ -54,4 +60,6 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
+
+
 }

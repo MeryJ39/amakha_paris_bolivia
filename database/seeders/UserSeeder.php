@@ -16,11 +16,11 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        // Obtener el ID del rol 'admin', 'consultor', 'cliente' y 'personal'
-        $adminRole = Role::where('name', 'Admin')->first();
-        $consultorRole = Role::where('name', 'Consultor')->first();
-        $clienteRole = Role::where('name', 'Cliente')->first();
-        $personalRole = Role::where('name', 'Personal')->first();  // Nuevo rol para 'Personal'
+            // Obtener el ID del rol 'admin', 'consultor', 'cliente' y 'personal'
+            $adminRole = Role::where('name', 'Admin')->first();
+            $consultorRole = Role::where('name', 'Consultor')->first();
+            $clienteRole = Role::where('name', 'Cliente')->first();
+            $personalRole = Role::where('name', 'Personal')->first();  // Nuevo rol para 'Personal'
 
         // Crear un usuario con rol 'admin'
         User::create([

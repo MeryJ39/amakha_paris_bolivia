@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ChatController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Order;
 use App\Models\Product;
@@ -110,7 +112,28 @@ Route::prefix('admin/orders')->group(function () {
     Route::get('/', [OrderManagementController::class, 'index'])->name('admin.orders.index');  // Lista de pedidos
     Route::get('/{id}', [OrderManagementController::class, 'show'])->name('admin.orders.show');  // Detalles de pedido
     Route::post('/{id}/status', [OrderManagementController::class, 'updateStatus'])->name('admin.orders.updateStatus');  // Cambiar estado
+
+    Route::post('/{order}/chat', [ChatController::class, 'store'])->name('admin.orders.start_chat'); // Cambiado el nombre de la ruta
+
 });
+
+
+// routes/web.php
+
+Route::middleware('auth')->group(function () {  // Rutas protegidas por autenticación
+
+    // Rutas para Chats
+    Route::get('/chat/{chat}', [ChatController::class, 'show'])->name('chat.show'); // Mostrar un chat específico
+    Route::post('/orders/{order}/chat', [ChatController::class, 'store'])->name('order.start_chat'); // Iniciar/Crear chat desde pedido
+
+    // Rutas para Mensajes
+    Route::post('/messages', [MessageController::class, 'store'])->name('messages.store'); // Guardar un nuevo mensaje
+
+    // ... (otras rutas de tu aplicación)
+});
+
+Route::resource('chats', ChatController::class); // Genera rutas para todas las acciones CRUD en chats
+Route::resource('messages', MessageController::class); // Genera rutas para todas las acciones CRUD en mensajes
 
 
 use App\Http\Controllers\Admin\ProductManagementController;
