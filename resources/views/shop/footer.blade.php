@@ -13,8 +13,8 @@
                 <h5 class="font-semibold mb-4">INSTITUCIONAL</h5>
                 <ul class="space-y-2">
                     <li><a href="{{ url('/quienes-somos') }}" class="text-sm hover:text-blue-500">Quiénes somos</a></li>
-                    <li><a href="{{ url('/mapa-del-sitio') }}" class="text-sm hover:text-blue-500">Mapa del sitio</a></li>
-                    <li><a href="{{ url('/nuestro-catalogo') }}" class="text-sm hover:text-blue-500">Nuestro catálogo</a></li>
+                    <li><a href="https://maps.app.goo.gl/3T9kxxCMcKWXwLNGA" target="_blank" class="text-sm hover:text-blue-500">Ver ubicación en el mapa</a></li>
+                    
                 </ul>
             </div>
 
@@ -22,10 +22,8 @@
             <div>
                 <h5 class="font-semibold mb-4">AYUDA</h5>
                 <ul class="space-y-2">
-                    <li><a href="{{ url('/politica-de-privacidad') }}" class="text-sm hover:text-blue-500">Política de privacidad</a></li>
-                    <li><a href="{{ url('/cambios-devoluciones') }}" class="text-sm hover:text-blue-500">Cambios Devoluciones/Reembolsos</a></li>
-                    <li><a href="{{ url('/condiciones-de-uso') }}" class="text-sm hover:text-blue-500">Condiciones de uso</a></li>
-                    <li><a href="{{ url('/contactenos') }}" class="text-sm hover:text-blue-500">Contáctenos</a></li>
+                    
+                    <li><a href="https://wa.me/59177390413?text=Quiero%20ser%20consultor"{{ url('/contactenos') }}" class="text-sm hover:text-blue-500">Contáctenos</a></li>
                 </ul>
             </div>
 

@@ -11,7 +11,7 @@ class Product extends Model
     use HasFactory;
 
     // Campos que pueden ser asignados masivamente
-    protected $fillable = ['name', 'description', 'price', 'stock', 'image', 'subcategory_id', 'slug'];
+    protected $fillable = ['name', 'description', 'price', 'stock', 'image', 'subcategory_id', 'slug', 'discount'];
 
     // Relación con la subcategoría
     public function subcategory()

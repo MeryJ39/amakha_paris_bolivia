@@ -76,6 +76,14 @@ class CheckoutController extends Controller
                 'unit_discount' => $cartItem->unit_discount,  // El descuento unitario aplicado en ese momento
                 'total_at_purchase' => ($cartItem->price - $cartItem->unit_discount) * $cartItem->quantity,  // Total por esa cantidad de producto con el descuento
             ]);
+            // **Aquí es donde se actualiza el stock del producto**
+            $product = $cartItem->product;  // Obtener el producto desde el CartItem
+            $newStock = $product->stock - $cartItem->quantity;  // Restar la cantidad comprada al stock disponible
+
+            // Actualizar el stock del producto en la base de datos
+            $product->update([
+                'stock' => $newStock,
+            ]);
         }
 
         // Limpiar el carrito después de completar la compra
@@ -83,7 +91,7 @@ class CheckoutController extends Controller
 
         // Datos para la petición a Libélula
         $paymentData = [
-            'appkey' => '11bb10ce-68ba-4af1-8eb7-4e6624fed729', // Reemplaza con tu appkey de Libélula
+            'appkey' => env('LIBELULA_API_KEY', '11bb10ce-68ba-4af1-8eb7-4e6624fed729'), // Reemplaza con tu appkey de Libélula
             'email_cliente' => Auth::user()->email,  // El email del cliente
             'identificador' => $uniqueIdentifier,  // Identificador único generado
             'callback_url' => url("/api/pago-exitoso?id={$order->id}"), // Notificación interna de pago completado

@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\CartItem;
+use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -32,14 +33,23 @@ class CartItemComponent extends Component
 
     public function incrementQuantity(): void
     {
-        DB::transaction(function () {
-            $this->quantity++;
+        // Buscar el producto y obtener el stock disponible
+        $product = Product::findOrFail(CartItem::find($this->cartItemId)->product_id);
+        $availableStock = $product->stock;
 
-            CartItem::where('id', $this->cartItemId)
-                ->update(['quantity' => $this->quantity]);
-        });
+        if ($this->quantity < $availableStock) {
 
-        $this->dispatch('cartUpdated');
+            DB::transaction(function () {
+                $this->quantity++;
+
+                CartItem::where('id', $this->cartItemId)
+                    ->update(['quantity' => $this->quantity]);
+            });
+
+            $this->dispatch('cartUpdated');
+        } else {
+            // Si la cantidad supera el stock disponible, mostrar un mensaje de advertencia
+        }
     }
 
     public function decrementQuantity(): void

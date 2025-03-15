@@ -79,25 +79,7 @@
             </li>
         @endif
 
-        <!-- Gestión de Roles -->
-        @if ($userRoleId == 1)  <!-- Solo para Superadmin -->
-            <li>
-                <a href="{{ route('admin.roles.index', 1) }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fas fa-user-shield w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
-                    <span class="ms-3">Gestión de Roles</span>
-                </a>
-            </li>
-        @endif
 
-        <!-- Gestión de Descuentos -->
-        @if ($userRoleId == 1 || $userRoleId == 4)  <!-- Admin o Superadmin -->
-            <li>
-                <a href="{{ route('admin.discounts.index') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fas fa-tag w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
-                    <span class="ms-3">Gestión de Descuentos</span>
-                </a>
-            </li>
-        @endif
 
         <!-- Perfil -->
         <li>

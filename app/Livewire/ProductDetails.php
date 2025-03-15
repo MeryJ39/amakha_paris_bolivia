@@ -19,6 +19,8 @@ class ProductDetails extends Component
     public $discountAmount = 0; // Descuento en el producto
     public $finalPrice; // Precio final después de aplicar el descuento
 
+    public $consultorPrice; // Precio para consultores
+
     // Recibe el ID del producto cuando se inicializa el componente
     public function mount($productId)
     {
@@ -36,27 +38,28 @@ class ProductDetails extends Component
     public function applyDiscounts($product)
     {
         $user = Auth::user();
-        $discount = null;
-        $discountAmount = 0; // Inicializamos el descuento a 0
+        $discountAmount = 0;  // Inicializamos el descuento a 0
+        $consultorPrice = $product->price; // Aseguramos que siempre haya un precio de consultor (por defecto es el precio original)
 
         if ($user) {
-            // Obtener el descuento correspondiente para el rol del usuario y el producto
-            $discount = Discount::where('role_id', $user->role_id)
-                ->where('product_id', $product->id)
-                ->where('is_active', true)
-                ->where('start_date', '<=', now())
-                ->where('end_date', '>=', now())
-                ->first();
+            // Si el rol del usuario es 2, aplicamos el descuento de consultor
+            if ($user->role_id == 2) {
+                $discountAmount = 0;  // El descuento es 0
+                $consultorPrice = $product->price / 2; // El precio se reduce a la mitad
+            } else {
+                // Si el rol del usuario no es 2, aplicamos el descuento del producto
+                // Aquí usamos el campo 'discount' del producto
+                $discountAmount = $product->discount ?? 0;  // Si no hay descuento en el producto, será 0
+            }
+        } else {
+            // Si no hay usuario autenticado, usamos el descuento del producto
+            $discountAmount = $product->discount ?? 0;  // Si no hay descuento, es 0
         }
 
-        // Si hay un descuento, calcular el monto del descuento
-        if ($discount) {
-            $discountAmount = $discount->discount_amount;
-        }
-
-        // Asignar el descuento y el precio final
+        // Calcular el precio final después del descuento
         $this->discountAmount = $discountAmount;
         $this->finalPrice = $discountAmount > 0 ? $product->price - $discountAmount : $product->price;
+        $this->consultorPrice = $consultorPrice;
     }
 
     // Método para agregar al carrito
@@ -87,7 +90,7 @@ class ProductDetails extends Component
                 'user_id' => $user->id,
                 'product_id' => $this->product->id,
                 'quantity' => $this->quantity,
-                'price' => $this->product->price,
+                'price' => $this->product->price > $this->consultorPrice ? $this->consultorPrice : $this->product->price,  // Precio del producto
                 'unit_discount' => $this->discountAmount,  // Descuento aplicado
             ]);
 
