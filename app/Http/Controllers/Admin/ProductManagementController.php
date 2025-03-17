@@ -31,7 +31,7 @@ class ProductManagementController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255|unique:products,name',
             'price' => 'required|numeric',
             'stock' => 'required|integer',
             'description' => 'nullable|string',
@@ -39,6 +39,11 @@ class ProductManagementController extends Controller
             'image' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
             'discount' => 'nullable|numeric|min:0',  // Validación para el descuento
 
+        ], [
+            'name.unique' => 'El Nombre del Producto ya existe.',
+            'price.required' => 'El Precio es requerido.',
+            'stock.required' => 'El Stock es requerido.',
+            'subcategory_id.required' => 'La Subcategoría es requerida.',
         ]);
 
         $product = new Product($validated);

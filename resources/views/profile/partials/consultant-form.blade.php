@@ -63,7 +63,7 @@
         <input type="hidden" name="mk_code" id="mk_code" value="">
 
         <p id="helper-text-explanation" class="mt-2 text-sm text-gray-500 dark:text-gray-400">Ingrese el código de 7
-            dígitos que le enviamos por correo electrónico.</p>
+            dígitos que le asiganron.</p>
 
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Verificar Código') }}</x-primary-button>
